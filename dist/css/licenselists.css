@@ -1,0 +1,792 @@
+﻿body {
+    margin: 0;
+    padding: 0;
+}
+
+@media screen and (min-width: 1024px) and (max-width: 2560px) {
+    /* Upload Documents Modal */
+    .modalBackground {
+        background-color: Black;
+        filter: alpha(opacity=60);
+        opacity: 0.6;
+    }
+
+    .upload {
+        background-color: #FFFFFF;
+        width: 400px;
+        border: 3px solid #357ca5;
+        border-radius: 12px;
+        padding: 0;
+    }
+
+        .upload .header {
+            background-color: #357ca5;
+            height: 30px;
+            color: White;
+            line-height: 30px;
+            text-align: center;
+            font-weight: bold;
+            border-top-left-radius: 6px;
+            border-top-right-radius: 6px;
+        }
+
+        .upload .body {
+            height: 100%;
+            /*line-height: 30px;*/
+            text-align: center;
+            font-weight: bold;
+            padding: 20px;
+        }
+
+        .upload .footer .col-md-offset-4 {
+            margin-left: 39%;
+            padding-bottom: 10px;
+        }
+
+        .upload #btnclose {
+            text-align: center;
+            font-weight: bold;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+    /* End Upload Documents Modal */
+
+    /* Preload Documents Modal */
+    .modalBackground {
+        background-color: Black;
+        filter: alpha(opacity=60);
+        opacity: 0.6;
+    }
+
+    .preload {
+        background-color: #FFFFFF;
+        width: 50%;
+        border: 3px solid #357ca5;
+        border-radius: 12px;
+        padding: 0;
+    }
+
+    .preload .header {
+        background-color: #357ca5;
+        height: 30px;
+        color: White;
+        line-height: 30px;
+        text-align: center;
+        font-weight: bold;
+        border-top-left-radius: 6px;
+        border-top-right-radius: 6px;
+    }
+
+    .preload .body {
+        height: 100%;
+        /*line-height: 30px;*/
+        text-align: center;
+        font-weight: bold;
+        padding: 20px;
+    }
+
+    .preload .footer .col-md-offset-4 {
+        margin-left: 43%;
+        padding-bottom: 10px;
+    }
+
+    .preload #btnok {
+        text-align: center;
+        font-weight: bold;
+        cursor: pointer;
+        border-radius: 4px;
+    }
+    /* End Preload Documents Modal */
+
+    /* Standard Documents Modal */
+    .modalBackground {
+        background-color: Black;
+        filter: alpha(opacity=60);
+        opacity: 0.6;
+    }
+
+    .standard {
+        background-color: #FFFFFF;
+        width: 50%;
+        border: 3px solid #357ca5;
+        border-radius: 12px;
+        padding: 0;
+    }
+
+        .standard .header {
+            background-color: #357ca5;
+            height: 30px;
+            color: White;
+            line-height: 30px;
+            text-align: center;
+            font-weight: bold;
+            border-top-left-radius: 6px;
+            border-top-right-radius: 6px;
+        }
+
+    .standard .body {
+        height: 100%;
+        /*line-height: 30px;*/
+        text-align: center;
+        font-weight: bold;
+        padding: 20px;
+    }
+
+    .standard .footer .col-md-offset-6 {
+        margin-left: 43%;
+        padding-bottom: 10px;
+    }
+
+    .standard #btncancel {
+        text-align: center;
+        font-weight: bold;
+        cursor: pointer;
+        border-radius: 4px;
+    }
+    /* End Standard Documents Modal */
+
+    /* Details Modal */
+    .modalBackground {
+        background-color: Black;
+        filter: alpha(opacity=60);
+        opacity: 0.6;
+    }
+
+    .details {
+        background-color: #FFFFFF;
+        left: 240px;
+        width: 70%;
+        border: 3px solid #357ca5;
+        border-radius: 12px;
+        padding: 0;
+    }
+
+        .details .header {
+            background-color: #357ca5;
+            height: 30px;
+            color: White;
+            line-height: 30px;
+            text-align: center;
+            font-weight: bold;
+            border-top-left-radius: 6px;
+            border-top-right-radius: 6px;
+        }
+
+        .details .body {
+            height: 100%;
+            /*line-height: 30px;*/
+            text-align: justify;
+            font-weight: normal;
+            padding: 20px;
+        }
+
+        .details .footer .col-md-offset-6 {
+            margin-left: 46%;
+            padding-bottom: 10px;
+        }
+
+        .details #btnremove {
+            text-align: center;
+            font-weight: bold;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+    /* End Details Modal */
+}
+
+
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+    /* Upload Documents Modal */
+    .modalBackground {
+        background-color: Black;
+        filter: alpha(opacity=60);
+        opacity: 0.6;
+    }
+
+    .upload {
+        background-color: #FFFFFF;
+        width: 330px;
+        border: 3px solid #357ca5;
+        border-radius: 12px;
+        padding: 0;
+    }
+
+        .upload .header {
+            background-color: #357ca5;
+            height: 30px;
+            color: White;
+            line-height: 30px;
+            text-align: center;
+            font-weight: bold;
+            border-top-left-radius: 6px;
+            border-top-right-radius: 6px;
+        }
+
+        .upload .body {
+            height: 100%;
+            /*line-height: 15px;*/
+            text-align: center;
+            font-weight: bold;
+            padding: 20px;
+        }
+
+        .upload .footer .col-md-offset-4 {
+            margin-left: 39%;
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+
+        .upload #btnclose {
+            text-align: center;
+            font-weight: bold;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+    /* End Upload Documents Modal */
+
+    /* Preload Documents Modal */
+    .modalBackground {
+        background-color: Black;
+        filter: alpha(opacity=60);
+        opacity: 0.6;
+    }
+
+    .preload {
+        background-color: #FFFFFF;
+        width: 330px;
+        border: 3px solid #357ca5;
+        border-radius: 12px;
+        padding: 0;
+    }
+
+        .preload .header {
+            background-color: #357ca5;
+            height: 30px;
+            color: White;
+            line-height: 30px;
+            text-align: center;
+            font-weight: bold;
+            border-top-left-radius: 6px;
+            border-top-right-radius: 6px;
+        }
+
+    .preload .body {
+        height: 100%;
+        /*line-height: 15px;*/
+        text-align: center;
+        font-weight: bold;
+        padding: 20px;
+    }
+
+    .preload .footer .col-md-offset-4 {
+        margin-left: 39%;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+
+        .preload #btnok {
+            text-align: center;
+            font-weight: bold;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+    /* End Preload Documents Modal */
+
+    /* Standard Documents Modal */
+    .modalBackground {
+        background-color: Black;
+        filter: alpha(opacity=60);
+        opacity: 0.6;
+    }
+
+    .standard {
+        background-color: #FFFFFF;
+        width: 330px;
+        border: 3px solid #357ca5;
+        border-radius: 12px;
+        padding: 0;
+    }
+
+        .standard .header {
+            background-color: #357ca5;
+            height: 30px;
+            color: White;
+            line-height: 30px;
+            text-align: center;
+            font-weight: bold;
+            border-top-left-radius: 6px;
+            border-top-right-radius: 6px;
+        }
+
+        .standard .body {
+            height: 100%;
+            /*line-height: 15px;*/
+            text-align: center;
+            font-weight: bold;
+            padding: 20px;
+        }
+
+        .standard .footer .col-md-offset-6 {
+            margin-left: 33%;
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+
+        .standard #btncancel {
+            text-align: center;
+            font-weight: bold;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+    /* End Standard Documents Modal */
+
+    /* Details Modal */
+    .modalBackground {
+        background-color: Black;
+        filter: alpha(opacity=60);
+        opacity: 0.6;
+    }
+
+    .details {
+        background-color: #FFFFFF;
+        width: 70%;
+        left:100px;
+        border: 3px solid #357ca5;
+        border-radius: 12px;
+        padding: 0;
+    }
+
+        .details .header {
+            background-color: #357ca5;
+            height: 30px;
+            color: White;
+            line-height: 30px;
+            text-align: center;
+            font-weight: bold;
+            border-top-left-radius: 6px;
+            border-top-right-radius: 6px;
+        }
+
+        .details .body {
+            height: 100%;
+            /*line-height: 15px;*/
+            text-align: justify;
+            font-weight: normal;
+            padding: 20px;
+        }
+
+        .details .footer .col-md-offset-6 {
+            margin-left: 45%;
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+
+        .details #btnremove {
+            text-align: center;
+            font-weight: bold;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+    /* End Details Modal */
+}
+
+@media screen and (min-width: 375px) and (max-width: 766px) {
+    /* Upload Documents Modal */
+    .modalBackground {
+        background-color: Black;
+        filter: alpha(opacity=60);
+        opacity: 0.6;
+    }
+
+    .upload {
+        background-color: #FFFFFF;
+        width: 330px;
+        border: 3px solid #357ca5;
+        border-radius: 12px;
+        padding: 0;
+    }
+
+        .upload .header {
+            background-color: #357ca5;
+            height: 30px;
+            color: White;
+            line-height: 30px;
+            text-align: center;
+            font-weight: bold;
+            border-top-left-radius: 6px;
+            border-top-right-radius: 6px;
+        }
+
+        .upload .body {
+            height: 100%;
+            /*line-height: 15px;*/
+            text-align: center;
+            font-weight: bold;
+            padding: 20px;
+        }
+
+        .upload .footer .col-md-offset-4 {
+            margin-left: 39%;
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+
+        .upload #btnclose {
+            text-align: center;
+            font-weight: bold;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+    /* End Upload Documents Modal */
+
+    /* Preload Documents Modal */
+    .modalBackground {
+        background-color: Black;
+        filter: alpha(opacity=60);
+        opacity: 0.6;
+    }
+
+    .preload {
+        background-color: #FFFFFF;
+        width: 330px;
+        border: 3px solid #357ca5;
+        border-radius: 12px;
+        padding: 0;
+    }
+
+        .preload .header {
+            background-color: #357ca5;
+            height: 30px;
+            color: White;
+            line-height: 30px;
+            text-align: center;
+            font-weight: bold;
+            border-top-left-radius: 6px;
+            border-top-right-radius: 6px;
+        }
+
+        .preload .body {
+            height: 100%;
+            /*line-height: 15px;*/
+            text-align: center;
+            font-weight: bold;
+            padding: 20px;
+        }
+
+        .preload .footer .col-md-offset-4 {
+            margin-left: 39%;
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+
+        .preload #btnok {
+            text-align: center;
+            font-weight: bold;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+    /* End Preload Documents Modal */ 
+
+    /* Standard Document Model */
+    .modalBackground {
+        background-color: Black;
+        filter: alpha(opacity=60);
+        opacity: 0.6;
+    }
+
+    .standard {
+        background-color: #FFFFFF;
+        width: 330px;
+        border: 3px solid #357ca5;
+        border-radius: 12px;
+        padding: 0;
+    }
+
+        .standard .header {
+            background-color: #357ca5;
+            height: 30px;
+            color: White;
+            line-height: 30px;
+            text-align: center;
+            font-weight: bold;
+            border-top-left-radius: 6px;
+            border-top-right-radius: 6px;
+        }
+
+        .standard .body {
+            height: 100%;
+            /*line-height: 15px;*/
+            text-align: center;
+            font-weight: bold;
+            padding: 20px;
+        }
+
+        .standard .footer .col-md-offset-6 {
+            margin-left: 39%;
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+
+        .standard #btncancel {
+            text-align: center;
+            font-weight: bold;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+    /* End Standard Document Model */
+
+    /* Details Model */
+    .modalBackground {
+        background-color: Black;
+        filter: alpha(opacity=60);
+        opacity: 0.6;
+    }
+
+    .details {
+        background-color: #FFFFFF;
+        width: 70%;
+        left: 64px;
+        border: 3px solid #357ca5;
+        border-radius: 12px;
+        padding: 0;
+    }
+
+        .details .header {
+            background-color: #357ca5;
+            height: 30px;
+            color: White;
+            line-height: 30px;
+            text-align: center;
+            font-weight: bold;
+            border-top-left-radius: 6px;
+            border-top-right-radius: 6px;
+        }
+
+        .details .body {
+            height: 100%;
+            /*line-height: 15px;*/
+            text-align: justify;
+            font-weight: normal;
+            padding: 20px;
+        }
+
+        .details .footer .col-md-offset-6 {
+            margin-left: 39%;
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+
+    .details #btnremove {
+        text-align: center;
+        font-weight: bold;
+        cursor: pointer;
+        border-radius: 4px;
+    }
+    /* End Details Model */
+}
+
+@media screen and (min-width: 320px) and (max-width: 374px) {
+    /* Upload Documents Modal */
+    .modalBackground {
+        background-color: Black;
+        filter: alpha(opacity=60);
+        opacity: 0.6;
+    }
+
+    .upload {
+        background-color: #FFFFFF;
+        width: 300px;
+        border: 3px solid #357ca5;
+        border-radius: 12px;
+        padding: 0;
+    }
+
+        .upload .header {
+            background-color: #357ca5;
+            height: 30px;
+            color: White;
+            line-height: 30px;
+            text-align: center;
+            font-weight: bold;
+            border-top-left-radius: 6px;
+            border-top-right-radius: 6px;
+        }
+
+        .upload .body {
+            height: 100%;
+            /*line-height: 15px;*/
+            text-align: center;
+            font-weight: bold;
+            padding: 20px;
+        }
+
+        .upload .footer .col-md-offset-4 {
+            margin-left: 39%;
+            padding-bottom: 10px;
+            padding-top: 10px;
+        }
+
+        .upload #btnclose {
+            text-align: center;
+            font-weight: bold;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+    /* End Upload Documents Modal */
+
+    /* Preload Documents Modal */
+    .modalBackground {
+        background-color: Black;
+        filter: alpha(opacity=60);
+        opacity: 0.6;
+    }
+
+    .preload {
+        background-color: #FFFFFF;
+        width: 300px;
+        border: 3px solid #357ca5;
+        border-radius: 12px;
+        padding: 0;
+    }
+
+        .preload .header {
+            background-color: #357ca5;
+            height: 30px;
+            color: White;
+            line-height: 30px;
+            text-align: center;
+            font-weight: bold;
+            border-top-left-radius: 6px;
+            border-top-right-radius: 6px;
+        }
+
+        .preload .body {
+            height: 100%;
+            /*line-height: 15px;*/
+            text-align: center;
+            font-weight: bold;
+            padding: 20px;
+        }
+
+        .preload .footer .col-md-offset-4 {
+            margin-left: 39%;
+            padding-bottom: 10px;
+            padding-top: 10px;
+        }
+
+        .preload #btnok {
+            text-align: center;
+            font-weight: bold;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+    /* End Preload Documents Modal */
+
+    /* Standard Documents Modal */
+    .modalBackground {
+        background-color: Black;
+        filter: alpha(opacity=60);
+        opacity: 0.6;
+    }
+
+    .standard {
+        background-color: #FFFFFF;
+        width: 300px;
+        border: 3px solid #357ca5;
+        border-radius: 12px;
+        padding: 0;
+    }
+
+        .standard .header {
+            background-color: #357ca5;
+            height: 30px;
+            color: White;
+            line-height: 30px;
+            text-align: center;
+            font-weight: bold;
+            border-top-left-radius: 6px;
+            border-top-right-radius: 6px;
+        }
+
+        .standard .body {
+            height: 100%;
+            /*line-height: 15px;*/
+            text-align: center;
+            font-weight: bold;
+            padding: 20px;
+        }
+
+        .standard .footer .col-md-offset-6 {
+            margin-left: 39%;
+            padding-bottom: 10px;
+            padding-top: 10px;
+        }
+
+        .standard #btncancel {
+            text-align: center;
+            font-weight: bold;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+    /* End Standard Documents Modal */
+
+    /* Details Modal */
+    .modalBackground {
+        background-color: Black;
+        filter: alpha(opacity=60);
+        opacity: 0.6;
+    }
+
+    .details {
+        background-color: #FFFFFF;
+        width: 70%;
+        border: 3px solid #357ca5;
+        border-radius: 12px;
+        padding: 0;
+    }
+
+        .details .header {
+            background-color: #357ca5;
+            height: 30px;
+            color: White;
+            line-height: 30px;
+            text-align: justify;
+            font-weight: normal;
+            border-top-left-radius: 6px;
+            border-top-right-radius: 6px;
+        }
+
+        .details .body {
+            height: 100%;
+            /*line-height: 15px;*/
+            text-align: center;
+            font-weight: bold;
+            padding: 20px;
+        }
+
+        .details .footer .col-md-offset-6 {
+            margin-left: 39%;
+            padding-bottom: 10px;
+            padding-top: 10px;
+        }
+
+        .details #btnremove {
+            text-align: center;
+            font-weight: bold;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+    /* End Details Modal */
+
+    /* Mail Submit Button */
+    .SubMail {
+        padding: 20px;
+    }
+        .SubMail .col-md-offset-5 {
+            margin-left: 45.666667%;
+        }
+    #btnsubmit{
+        padding:5px;
+    }
+    /* End Mail Submit Button */
+}
