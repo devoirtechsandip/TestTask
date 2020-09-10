@@ -31,28 +31,14 @@
                 <!-- /.box-header -->
                 <!-- TABLE: Search Criteria -->
                 <div class="box box-info" style="left: 0px; top: 0px; width: 69%">
-                    <div class="box-header with-border" style="left: 43px; top: 4px; width: 643px">
-                       <%-- <h3 class="box-title">Post Reply</h3>--%>
-                      <%--  <div class="box-tools pull-right">
-                            <button type="button" class="btn btn-box-tool" data-widget="collapse">
-                                <i class="fa fa-minus"></i>
-                            </button>
-                            <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
-
-                        </div>
- --%>                   </div>
                  <div class="well well-sm thread_actions col-md-12">
-                    <asp:Button ID="btnPosteRply" runat="server" Text="Post Reply" ForeColor="#3399ff" BorderColor="#3399ff" BackColor="White" Width="92%" Height="50px" style="margin-left: 28px"></asp:Button>
+                    <asp:Button ID="btnPosteRply" runat="server" Text="Post Reply" OnClick="btnPosteRply_Click" ForeColor="#3399ff" BorderColor="#3399ff" BackColor="White" Width="92%" Height="50px" style="margin-left: 28px"></asp:Button>
                       
-
+                     <asp:Panel ID="pnlPostRply" runat="server" Visible="false">
                 <div id="reply_ticket_form_container" class="col-md-12 rich_form_container">
                                         <div class="col-md-12 form-group">
                                     <asp:TextBox ID="txtReply" TextMode="MultiLine" Rows="40" runat="server" class="form-control" name="editor" Height="127px"></asp:TextBox>
-            						<%--<fieldset id="ticket_reply_editor_attachment" class="scheduler-border" style="display:none; border: 1px solid #000 !important;">
-                <legend class="scheduler-border"> Attach Files (<span onclick="reply_ticket_desc_attach()" class="glyphicon glyphicon-plus attach_plus"></span>) </legend>
-
-            </fieldset>--%>
-						
+            						 
 						                    </div>
                     <div class="col-md-12 form-group">
                         <asp:TextBox ID="txtBCC" runat="server" class="form-control" type="text" name="bcc" value="" placeholder="BCC (Comma separated list)" />
@@ -64,9 +50,10 @@
                         <asp:Button runat="server" class="form-control btn btn-info" id="btnCancel" onclick="btnCancel_Click" Text="Cancel"></asp:Button>
                     </div>
                 </div>
+                         </asp:Panel>
              </div>
             
-                    <div class="table-responsive" style="border: 1px solid #5D7B9D;">
+                                        <div class="table-responsive" style="border: 1px solid #5D7B9D;">
                             <asp:ListView ID="lstReply" runat="server"> 
                                 <ItemTemplate>
                                   <%-- <table>
@@ -107,6 +94,7 @@
                             </asp:ListView>
                         </div>
 
+
                      <%-- Ticket Status--%> 
 <div class="well well-sm thread_actions col-md-4">
 
@@ -136,7 +124,7 @@
           
     <hr class="sidebar-module-hr">
           
-        <br />
+        <br /> 
        <%-- <asp:ListBox ID="ListBox1" runat="server" AutoPostBack="True"
             onselectedindexchanged="ListBox1_SelectedIndexChanged" />--%>
               <div class="table-responsive" style="border: 1px solid #5D7B9D;">
@@ -147,12 +135,17 @@
                         <ItemTemplate>
                             <br />
                             <asp:LinkButton ID="lnkDownload" runat="server" Text='<%# Eval("FileName") %>'
-                                CommandArgument='<%# Eval("pk") %>'></asp:LinkButton>
+                                CommandArgument='<%# Eval("pk") %>' OnClick="lnkDownload_Click"></asp:LinkButton>
                         </ItemTemplate>
                     </asp:TemplateField>
                 </Columns>
             </asp:GridView>
                   </div>
+         
+
+                  
+                
+</div>
 
 </div>
         
@@ -160,6 +153,6 @@
          </div>       
 </div>                               
     </section>
-    
+
 </asp:Content>
 

@@ -16,30 +16,15 @@ public partial class PostReply : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
-        lblTicketId.Text = "1";
-        if (!Page.IsPostBack)
+        if (Request.QueryString["pk"] != null)
         {
-            DirectoryInfo di = new DirectoryInfo(path);
-            FileInfo[] fi = di.GetFiles();
-
-
-            foreach (FileInfo file in fi)
-            {
-                //ListBox1.Items.Add(file.Name);
-            }
+            lblTicketId.Text = Request.QueryString["pk"];
         }
+
         loadAttachment();
         loadReply();
 
-    }
-    //protected void ListBox1_SelectedIndexChanged(object sender, EventArgs e)
-    //{
-    //    WebClient client = new WebClient();
-    //    Byte[] buffer = client.DownloadData(path + ListBox1.SelectedValue);
-    //    Response.ContentType = "application/pdf";
-    //    Response.AddHeader("content-length", buffer.Length.ToString());
-    //    Response.BinaryWrite(buffer);
-    //}
+    } 
 
     private void loadAttachment()
     {
@@ -122,7 +107,7 @@ public partial class PostReply : System.Web.UI.Page
 
     protected void btnCancel_Click(object sender, EventArgs e)
     {
-
+        pnlPostRply.Visible = false;
     }
     public void clear()
     {
@@ -157,5 +142,79 @@ public partial class PostReply : System.Web.UI.Page
         {
 
         }
+    }
+
+    protected void lnkDownload_Click(object sender, EventArgs e)
+    {
+        int id = int.Parse((sender as LinkButton).CommandArgument);
+        string fileName = null;
+        string constr = ConfigurationManager.ConnectionStrings["ESSConnectionString"].ConnectionString;
+        using (SqlConnection con = new SqlConnection(constr))
+        {
+            
+                string query = "SELECT pk, Filename, TicketId FROM TicketFile_Master where pk="+id;
+                SqlCommand cmd = new SqlCommand(query, con);
+                SqlDataAdapter sda = new SqlDataAdapter(cmd);
+                DataTable dt = new DataTable();
+                sda.Fill(dt);
+                foreach (DataRow dr in dt.Rows) fileName = dr.ItemArray[1].ToString();
+            
+        }
+        string file = "~/Files/" + fileName.ToString();
+        //if (file != string.Empty)
+        //{
+        //    WebClient req = new WebClient();
+        //    HttpResponse response = HttpContext.Current.Response;
+        //    string filePath = file;
+        //    response.Clear();
+        //    response.ClearContent();
+        //    response.ClearHeaders();
+        //    response.Buffer = true;
+        //    response.AddHeader("Content-Disposition", "attachment;filename=Filename.extension");
+        //    byte[] data = req.DownloadData(Server.MapPath(filePath));
+        //    response.BinaryWrite(data);
+        //    response.End();
+        //}
+        //if (file != string.Empty)
+        //{
+        //    if (file.EndsWith(".txt"))
+        //    {
+        //        Response.ContentType = "application/txt";
+        //    }
+        //    else if (file.EndsWith(".pdf"))
+        //    {
+        //        Response.ContentType = "application/pdf";
+        //    }
+        //    else if (file.EndsWith(".docx"))
+        //    {
+        //        Response.ContentType = "application/docx";
+        //    }
+        //    else
+        //    {
+        //        Response.ContentType = "image/jpg";
+        //    }
+
+        //    string filePath = file;
+
+        //    Response.AddHeader("Content-Disposition", "attachment;filename=Filename.extension");
+        //    Response.TransmitFile(Server.MapPath(filePath));
+        //    Response.End();
+        //}
+        string strURL = file;
+        WebClient req = new WebClient();
+        HttpResponse response = HttpContext.Current.Response;
+        response.Clear();
+        response.ClearContent();
+        response.ClearHeaders();
+        response.Buffer = true;
+        response.AddHeader("Content-Disposition", "attachment;filename=\"" + Server.MapPath(strURL) + "\"");
+        byte[] data = req.DownloadData(Server.MapPath(strURL));
+        response.BinaryWrite(data);
+        response.End();
+    }
+
+    protected void btnPosteRply_Click(object sender, EventArgs e)
+    {
+        pnlPostRply.Visible = true;
     }
 }

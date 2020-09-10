@@ -63,7 +63,7 @@
                         <br />
 
                         <div class="table-responsive" style="border: 1px solid #5D7B9D;">
-                            <asp:ListView ID="lstdc" runat="server" >
+                            <asp:ListView ID="lstdc" runat="server" DataKeyNames="pk">
                                 <LayoutTemplate>
                                     <table class="table no-margin table-bordered table-hover">
                                         <thead style="background: #5D7B9D; color: white;">
@@ -83,10 +83,10 @@
                                     </table>
                                 </LayoutTemplate>
                                 <ItemTemplate>
-                                    <tr>
-
+                                    <tr onclick="window.location.href = 'PostReply.aspx?pk=<%# Eval("pk") %>';">
+                                        
                                         <td><%#Eval("pk")%>
-                                          <td> <asp:Button ID="btopen" runat="server" OnClick="btopen_Click" class="wpsp_admin_label" style="background-color:#d9534f;" Text="Open" /><%#Eval("Status")%></td>
+                                          <td> <asp:Label ID="btopen" runat="server" class="wpsp_admin_label" style="background-color:#d9534f;" Text="Open" /><%#Eval("Status")%></td>
                                            <%-- <td class="wpsp_td_field_status"><span class="wpsp_admin_label" runat="server" style="background-color:#d9534f;">Open</span>--%>
                                             <%--</td><asp:LinkButton ID="lbopen" runat="server" OnClick="lbopen_Click" class="wpsp_admin_label" style="background-color:#d9534f;">Open</asp:LinkButton>--%>
                                            <%-- <td><%#Eval("Status")%>--%>
