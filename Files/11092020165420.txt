@@ -1,0 +1,121 @@
+<%@ Page Title="" Language="C#" MasterPageFile="~/Main.master" AutoEventWireup="true" CodeBehind="BasicSP.aspx.cs" Inherits="BasicSP" %>
+
+
+<asp:Content ID="Content3" ContentPlaceHolderID="title" runat="Server">
+    <title>BasicSP</title>
+</asp:Content>
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="pagecontents" runat="Server">
+    <section class="content-header">
+      <h1>
+        BasicSP
+        <%--<small>Security</small>--%>
+      </h1>
+     <%--<ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li><a href="#">CRM</a></li>
+        <li class="active">Create</li>
+      </ol>
+    --%></section>
+    <!-- Main content -->
+    <section class="content">
+      <div class="row">
+        <!-- left column -->
+        <div class="col-md-12">
+        <!-- /.box-header -->
+	 <!-- TABLE: Search Criteria -->
+          <div class="box box-info">
+            <div class="box-header with-border">
+              <h3 class="box-title">BasicSP</h3>
+				<div class="box-tools pull-right">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                </button>
+                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+              </div>
+            </div>
+            <div class="box-body">
+                <div class="row">
+                    <div class="form-group col-md-4 col-xs-12">
+                        <asp:Label ID="Label2" runat="server" Text="Fullname"></asp:Label>
+                        <asp:TextBox ID="TextBox1" runat="server" class="form-control" placeholder="Enter Your Fullname"></asp:TextBox>
+
+                    </div>
+                    <div class="form-group col-md-4 col-xs-12">
+                                                            <asp:Label ID="Label6" runat="server" Text="EmailId"></asp:Label> 
+                                                               <asp:TextBox ID="txtact" runat="server" class="form-control" placeholder="Enter Your EmailId"></asp:TextBox>
+                                                             
+
+                                                        </div>
+                                                        <div class="form-group col-md-4 col-xs-12">
+                                                            <asp:Label ID="Label4" runat="server" Text="Address"></asp:Label>
+                                                            <asp:TextBox ID="txtrule" runat="server" class="form-control" placeholder="Enter Your Address"></asp:TextBox>
+                                                             
+                                                        </div>
+                </div>
+                 <div class="row">     
+                     <div class="form-group col-md-4 col-xs-12">
+                                                            <asp:Label ID="Label3" runat="server" Text="PhoneNumber"></asp:Label>
+                                                            <asp:TextBox ID="txtapplicable" runat="server" class="form-control" placeholder="Enter Your Phone Number"></asp:TextBox>
+                                                             
+                                                            
+                                                            </div>
+                     <div class="form-group col-md-4 col-xs-12">
+                                                            <asp:Label ID="Label7" runat="server" Text="Frequency"></asp:Label>
+                                                            <asp:TextBox ID="txtfreq" runat="server" class="form-control" placeholder="Enter Frequency"></asp:TextBox>
+                                                             
+                                                        </div>
+                    <div class="form-group col-md-4 col-xs-12">
+                                                            <asp:Label ID="Label1" runat="server" Text="Code"></asp:Label>
+                                                            <asp:TextBox ID="txtfid" runat="server" class="form-control" placeholder="Enter Code"></asp:TextBox>
+                                                        </div>
+                                                    </div>
+                
+                
+
+                    <div class="table-responsive" style="border: 1px solid #5D7B9D;">
+                        <asp:ListView runat="server" ID="ListView1"></asp:ListView>
+                        <asp:ListView ID="lv" runat="server" OnItemCommand="listview_ItemCommand" OnItemUpdating="listview_ItemUpdating" OnItemDeleting="listview_ItemDeleting" OnPagePropertiesChanging="listview_PagePropertiesChanging>
+                            <LayoutTemplate>
+                                <table class="table no-margin table-bordered table-hover">
+                                    <thead style="background: #5D7B9D; color: white;">
+                                        <tr>
+                                            <th>Fullname</th>
+                                            <th>EmailId</th>
+                                            <th>Address</th>
+                                            <th>PhoneNumber</th>
+                                            <th>Code</th>
+                                            <th>Edit</th>
+                                            <th>Delete</th>
+
+                                        </tr>
+                                    </thead>
+                                    <tr id="itemPlaceholder" runat="server"></tr>
+                                    
+                                </table>
+                            </LayoutTemplate>
+                            <ItemTemplate>
+                                <tr>
+                                    <td><%#Eval("Fullname")%></td>
+                                    <td><%#Eval("EmailId")%></td>
+                                    <td><%#Eval("Address")%></td>
+                                    <td><%#Eval("PhoneNumber")%></td>
+                                    <td><%#Eval("Code")%></td>
+                                    
+                                    <td>
+                                        <asp:LinkButton ID="btnupdate" runat="server" CssClass="btn btn-primary" CommandName="Update" CommandArgument='<%#Eval("Code")%>' ToolTip="Update"><i class="fas fa-edit"></i></asp:LinkButton></td>
+                                    
+                                    <td>
+                                        <asp:LinkButton ID="btndelete" runat="server" CssClass="btn btn-danger" CommandName="Delete" CommandArgument='<%#Eval("Code")%>' ToolTip="Delete"><i class="fas fa-trash-alt"></i></asp:LinkButton></td>
+                                </tr>
+                            </ItemTemplate>
+                        </asp:ListView>   
+              </div>
+                         </div>                             <br />
+                </div>
+              </div>
+            </div>
+        </section>
+
+</asp:Content>
+

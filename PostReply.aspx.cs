@@ -20,6 +20,7 @@ public partial class PostReply : System.Web.UI.Page
         {
             lblTicketId.Text = Request.QueryString["pk"];
         }
+        lblname.Text = Response.Cookies["Username"].Value;
 
         loadAttachment();
         loadReply();

@@ -1,13 +1,15 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/main.master" AutoEventWireup="true" CodeFile="CreateNewTicketMaster.aspx.cs" Inherits="CreateNewTicketMaster" %>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="title" Runat="Server">
+<%--<%@ Register Assembly="MSCaptcha" Namespace="MSCaptcha" TagPrefix="cc1" %>--%>
+
+<asp:Content ID="Content1" ContentPlaceHolderID="title" runat="Server">
     <title>Create New Ticket</title>
 </asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="head" Runat="Server">
+<asp:Content ID="Content2" ContentPlaceHolderID="head" runat="Server">
     <!-- bootstrap wysihtml5 - text editor -->
-  <%--<link rel="stylesheet" href="..\plugins\bootstrap-wysihtml5\bootstrap3-wysihtml5.min.css" />--%>
+    <%--<link rel="stylesheet" href="..\plugins\bootstrap-wysihtml5\bootstrap3-wysihtml5.min.css" />--%>
     <link href="plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css" rel="stylesheet" />
-    
+
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="pagecontents" runat="Server">
 
@@ -86,9 +88,55 @@
                             </div>
 
                           <div class="col-12">
-                                <asp:CheckBox ID="CheckBox1" runat="server"></asp:CheckBox>
-                                <asp:Label ID="Label6" runat="server" Text="I'm not a robot"></asp:Label>
+                               <%-- <asp:CheckBox ID="CheckBox1" runat="server"></asp:CheckBox>
+                                <asp:Label ID="Label6" runat="server" Text="I'm not a robot"></asp:Label>--%>
+                              
+                                     <asp:UpdatePanel ID="UP1" runat="server">
 
+                        <ContentTemplate>
+
+                            <table>
+
+                                <tr>
+
+                                    <td style="height: 50px; width: 100px;">
+
+                                        <asp:Image ID="imgCaptcha" runat="server" />
+
+                                    </td>
+
+                                    <td valign="middle">
+
+                                        <asp:Button ID="btnRefresh" runat="server" CausesValidation="false" Text="Refresh" OnClick="btnRefresh_Click" />
+
+                                    </td>
+
+                                </tr>
+
+                            </table>
+
+                        </ContentTemplate>
+
+                    </asp:UpdatePanel>
+                              <table><tr>
+                                 <td>
+
+                    Enter above captcha code :
+
+                </td>
+
+                <td>
+
+                    <asp:TextBox ID="txtCaptcha" runat="server" Width="200px"></asp:TextBox>
+                    <br />
+                    <span style="color: Red; font-weight: bold"> 
+                        <asp:Label ID="lblErrorMsg" runat="server"></asp:Label></span>
+
+                </td> 
+                                     </tr>
+                </table>               
+        </div>
+   </div>
                             </div>
                           
                             <div class="col-md-12">
@@ -105,8 +153,7 @@
                         
                         </div>
                     </div>
-                </div>
-            </div>
+                
         <!-- CK Editor -->
 <script src="bower_components/ckeditor/ckeditor.js" type="text/javascript"></script>
     <!-- Bootstrap WYSIHTML5 -->
@@ -121,5 +168,5 @@
     })
 </script>
     </section>
-    
+
 </asp:Content>

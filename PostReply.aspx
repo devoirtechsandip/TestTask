@@ -128,7 +128,7 @@
        <%-- <asp:ListBox ID="ListBox1" runat="server" AutoPostBack="True"
             onselectedindexchanged="ListBox1_SelectedIndexChanged" />--%>
               <div class="table-responsive" style="border: 1px solid #5D7B9D;">
-                  <asp:GridView ID="gridAttachment" runat="server" AutoGenerateColumns="false">
+                  <asp:GridView ID="gridAttachment" runat="server" AutoGenerateColumns="false" Width="250px">
                 <Columns>
                     <asp:BoundField DataField="pk" Visible="false" HeaderText="Id" ItemStyle-Width="100px" ItemStyle-HorizontalAlign="Center" />
                     <asp:TemplateField ItemStyle-HorizontalAlign="Left" HeaderText="Attachment" ItemStyle-Width="200px" HeaderStyle-CssClass="ticket-field-sidebar" >
@@ -141,11 +141,26 @@
                 </Columns>
             </asp:GridView>
                   </div>
-         
-
-                  
-                
 </div>
+                </div>
+                <%--User name and Email ID--%>
+                <div class="well well-sm thread_actions col-md-4">
+
+              <div id="right-sidebar-container1" class="col-md-3" style="left: -7px; top: -1px; width: 219px; height: 108px;">
+              <div class="sidebar-module" id="tic_status_sidebar1">
+
+    <h4> User Details	</h4>
+    <div class="ticket_status_sidebar">
+        <strong>Name:&nbsp; </strong>
+        <asp:Label ID="lblname" runat="server" Text=""></asp:Label>
+        
+
+    </div>
+    <%--<div class="ticket_status_sidebar" style="width: 228px">
+        <strong>Email ID:&nbsp; </strong> dmsahani@gmail.com    </div>--%>
+</div>
+</div>
+    
 
 </div>
         

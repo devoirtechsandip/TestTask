@@ -5,6 +5,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.IO;
 using System.Linq;
+using System.Text;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -14,12 +15,47 @@ public partial class CreateNewTicketMaster : System.Web.UI.Page
 {
     cls_Common_cls cls = new cls_Common_cls();
     SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ESSConnectionString"].ConnectionString);
+    
     protected void Page_Load(object sender, EventArgs e)
     {
         if (!IsPostBack)
         {
             BindDDLCategory();
             BindDDLPriority();
+            FillCapctha();
+        }
+    }
+    void FillCapctha() 
+    {
+
+        try
+
+        {
+
+            Random random = new Random();
+
+            string combination = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+
+            StringBuilder captcha = new StringBuilder();
+
+            for (int i = 0; i < 6; i++)
+            {
+
+                captcha.Append(combination[random.Next(combination.Length)]);
+
+                Session["captcha"] = captcha.ToString();
+
+                imgCaptcha.ImageUrl = "GenerateCaptcha.aspx?" + DateTime.Now.Ticks.ToString();
+
+            }
+        }
+
+        catch
+
+        {
+
+            throw;
+
         }
     }
     public void BindDDLCategory()
@@ -73,7 +109,7 @@ public partial class CreateNewTicketMaster : System.Web.UI.Page
         txtTextArea.Value = "";
         ddlPriority.SelectedValue= "1";
         ddlCategory.SelectedValue = "1";
-        CheckBox1.Checked = false;
+        //CheckBox1.Checked = false;
         FileUpload1.Dispose();
     }
 
@@ -82,8 +118,15 @@ public partial class CreateNewTicketMaster : System.Web.UI.Page
         Page.Validate();
         if (Page.IsValid)
         {
-            InsertTicket();
-            InsertFile();
+            if (Session["captcha"].ToString() != txtCaptcha.Text)
+            {
+                lblErrorMsg.Text = "Invalid Captcha Code";
+            }
+            else
+            {
+                InsertTicket();
+                InsertFile();
+            }
         }
         else return;
     }
@@ -172,5 +215,22 @@ public partial class CreateNewTicketMaster : System.Web.UI.Page
             foreach (DataRow dr in dt.Rows) TicketId = Convert.ToInt32(dr.ItemArray[0]);
         }
         return TicketId;
+    }
+
+    //protected void Unnamed1_Click(object sender, ImageClickEventArgs e)
+    //{
+    //    Captcha1.ValidateCaptcha(txtcapcha.Text.Trim());
+    //    e.IsValid = Captcha1.UserValidated;
+    //    if (e.IsValid)
+    //    {
+    //        ClientScript.RegisterStartupScript(this.GetType(), "alert", "alert('Valid Captcha!');", true);
+    //    }
+    //}
+
+
+
+    protected void btnRefresh_Click(object sender, EventArgs e)
+    {
+        FillCapctha();
     }
 }

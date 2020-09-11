@@ -14,8 +14,6 @@ public partial class TicketListMaster : System.Web.UI.Page
 
         if (!IsPostBack)
         {
-            //if (checkuseraccess())
-            //{
             BindListView();
             //}
             //else
