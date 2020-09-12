@@ -19,63 +19,63 @@ public partial class login : System.Web.UI.Page
 
 	protected void Page_Load(object sender, EventArgs e)
 	{
-       // if (!IsPostBack)
-        //{
-            //if (!String.IsNullOrEmpty(Request.QueryString["lg"]))
-            //{
-            //    if (Request.QueryString["lg"] == "L@G)UT")
-            //    {
-            //        if (Request.Cookies["UserDetails"] != null)
-            //        {
-            //            HttpCookie myCookie = new HttpCookie("UserDetails");
-            //            myCookie.Expires = DateTime.Now.AddDays(-1d);
-            //            Response.Cookies.Add(myCookie);
-            //        }
-            //    }
-            //}
+        if (!IsPostBack)
+        {
+            if (!String.IsNullOrEmpty(Request.QueryString["lg"]))
+            {
+                if (Request.QueryString["lg"] == "L@G)UT")
+                {
+                    if (Request.Cookies["UserDetails"] != null)
+                    {
+                        HttpCookie myCookie = new HttpCookie("UserDetails");
+                        myCookie.Expires = DateTime.Now.AddDays(-1d);
+                        Response.Cookies.Add(myCookie);
+                    }
+                }
+            }
 
-            //if (!string.IsNullOrEmpty(Request.QueryString["complainid"]))
-            //{
-            //    Session["cpid"] = Request.QueryString["complainid"];
-            //}
+            if (!string.IsNullOrEmpty(Request.QueryString["complainid"]))
+            {
+                Session["cpid"] = Request.QueryString["complainid"];
+            }
 
-           //getconfiguration();
+            getconfiguration();
 
-            //objcls.SendEmail1("Kumaril.Gupta@relianceada.com, dmsahani@gmail.com", DateTime.Now.ToString(), "test", "amol.p.mahajan@relianceada.com, kumbhar.sandip.b@gmail.com");
-        //}
-	}
+            objcls.SendEmail1("Kumaril.Gupta@relianceada.com, dmsahani@gmail.com", DateTime.Now.ToString(), "test", "amol.p.mahajan@relianceada.com, kumbhar.sandip.b@gmail.com");
+        }
+    }
 
-	//private void getconfiguration()
-	//{
-	//	try
-	//	{
-	//		using (SqlConnection cnn = new SqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings["constr"].ConnectionString))
-	//		{
-	//			cnn.Open();
+    private void getconfiguration()
+    {
+        try
+        {
+            using (SqlConnection cnn = new SqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings["constr"].ConnectionString))
+            {
+                cnn.Open();
 
-	//			using (SqlCommand cmd = new SqlCommand("SELECT [config] ,[value] FROM [Config_Master]", cnn))
-	//			{
-	//				SqlDataReader dr = cmd.ExecuteReader();
+                using (SqlCommand cmd = new SqlCommand("SELECT [config] ,[value] FROM [Config_Master]", cnn))
+                {
+                    SqlDataReader dr = cmd.ExecuteReader();
 
-	//				if (dr.HasRows)
-	//				{
-	//					while (dr.Read())
-	//					{
-	//						Response.Cookies[dr["config"].ToString()].Value = dr["value"].ToString();
-	//					}
-	//				}
-	//			}
-	//		}
-	//	}
-	//	catch (Exception Ex)
-	//	{
+                    if (dr.HasRows)
+                    {
+                        while (dr.Read())
+                        {
+                            Response.Cookies[dr["config"].ToString()].Value = dr["value"].ToString();
+                        }
+                    }
+                }
+            }
+        }
+        catch (Exception Ex)
+        {
 
-	//	}
-	//	finally
-	//	{
+        }
+        finally
+        {
 
-	//	}
-	//}
+        }
+    }
 
     protected void btnLogin_Click(object sender, EventArgs e)
     {
@@ -91,7 +91,7 @@ public partial class login : System.Web.UI.Page
                     cnn.Open();
 
                     using (SqlDataAdapter da = new SqlDataAdapter(
-                   "SELECT top 1 * FROM [UserLogin] where [loginid] = '" + txtUserName.Text.Trim() + "' and [password] = '" + txtPassword.Text.Trim() + "'", cnn))
+                   "SELECT top 1 * FROM [UserLogin],[UserEmail] where [loginid] = '" + txtUserName.Text.Trim() + "'and [password] = '" + txtPassword.Text.Trim() + "'", cnn))
                     {
 
                         DataSet ds = new DataSet();
@@ -103,12 +103,14 @@ public partial class login : System.Web.UI.Page
                             if (aCookie != null)
                             {
                                 aCookie.Values["Username"] = ds.Tables[0].Rows[0]["loginid"].ToString();
+                                aCookie.Values["UserEmail"] = ds.Tables[1].Rows[0]["UserEmail"].ToString();
                             }
                             else
                             {
                                 // no cookie found, create it
                                 aCookie = new HttpCookie("UserDetails");
                                 aCookie.Values.Add("Username", ds.Tables[0].Rows[0]["loginid"].ToString());
+                                aCookie.Values.Add("UserEmail", ds.Tables[1].Rows[0]["UserEmail"].ToString());
                             }
 
                             // overwrite the cookie

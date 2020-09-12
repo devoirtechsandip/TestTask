@@ -49,16 +49,12 @@
      </div>
                             </div>
                         </div>
+                        <br /> 
           </div>
                       
-                       </div>
-                            <%-- <div class="col-md-12">
-
-                                <asp:Button ID="update" runat="server" Text="Update" class="btn btn-primary btnsubmit margin" Visible="false"  />
-                             </div>--%>
+                       </div> 
                             <asp:Label ID="lblpk" runat="server" Text="pk" Visible="false"></asp:Label>
-                            <asp:Label ID="lblmsg" runat="server"></asp:Label>
-
+                            <asp:Label ID="lblmsg" runat="server" ForeColor="Red"></asp:Label> 
                         
                         <br />
 
@@ -70,8 +66,7 @@
                                             <tr>
                                                 <th>Id</th>
                                                 <th>Status</th>
-                                                <th>Subject</th>
-                                              <%--  <th>Description</th>--%>
+                                                <th>Subject</th> 
                                                 <th>Category</th>
                                                 <th>Priority</th>
                                                 <th>DateUpdated</th>
@@ -87,15 +82,31 @@
                                         
                                         <td><%#Eval("pk")%>
                                           <td> <asp:Label ID="btopen" runat="server" class="wpsp_admin_label" style="background-color:#d9534f;" Text="Open" /><%#Eval("Status")%></td>
-                                           <%-- <td class="wpsp_td_field_status"><span class="wpsp_admin_label" runat="server" style="background-color:#d9534f;">Open</span>--%>
-                                            <%--</td><asp:LinkButton ID="lbopen" runat="server" OnClick="lbopen_Click" class="wpsp_admin_label" style="background-color:#d9534f;">Open</asp:LinkButton>--%>
-                                           <%-- <td><%#Eval("Status")%>--%>
-                                            <td><%#Eval("Subject")%>
+                                          <td><%#Eval("Subject")%>
                                             <td><%#Eval("CategoryId")%>
                                             <td><%#Eval("PriorityId")%>
                                             <td><%#Eval("DateUpdated")%>  
                                        </tr>
                                 </ItemTemplate>
+                                <EmptyDataTemplate> 
+                                    <table class="table no-margin table-bordered table-hover">
+                                        <thead style="background: #5D7B9D; color: white;">
+                                            <tr>
+                                                <th>Id</th>
+                                                <th>Status</th>
+                                                <th>Subject</th> 
+                                                <th>Category</th>
+                                                <th>Priority</th>
+                                                <th>DateUpdated</th>
+                                            </tr> 
+                                        </thead>
+                                        <tr id="itemPlaceholder" runat="server"></tr> 
+                                        <tr>
+                                            <td colspan="6">
+                                    <strong>No Tickets found!</strong></td>
+                                        </tr>
+                                    </table> 
+                                </EmptyDataTemplate>
                             </asp:ListView>
                         </div>
                         </div>

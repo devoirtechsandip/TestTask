@@ -146,15 +146,17 @@
                 <%--User name and Email ID--%>
                 <div class="well well-sm thread_actions col-md-4">
 
-              <div id="right-sidebar-container1" class="col-md-3" style="left: -7px; top: -1px; width: 219px; height: 108px;">
+              <div id="right-sidebar-container1" class="col-md-3" style="left: -11px; top: 2px; width: 203px; height: 108px;">
               <div class="sidebar-module" id="tic_status_sidebar1">
 
     <h4> User Details	</h4>
     <div class="ticket_status_sidebar">
         <strong>Name:&nbsp; </strong>
         <asp:Label ID="lblname" runat="server" Text=""></asp:Label>
-        
-
+        <strong>
+        <br />
+        Email ID:&nbsp; </strong>
+        <asp:Label ID="lblemail" runat="server" Text=""></asp:Label>
     </div>
     <%--<div class="ticket_status_sidebar" style="width: 228px">
         <strong>Email ID:&nbsp; </strong> dmsahani@gmail.com    </div>--%>

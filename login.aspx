@@ -42,6 +42,11 @@
                     
                     <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
                 </div>
+                   <%--  <div class="form-group has-feedback">
+                    <asp:TextBox ID="txtUserEmail" type="text"  class="form-control" placeholder="User Email ID" runat="server"></asp:TextBox>
+                    
+                    <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+                </div>--%>
                 <div class="form-group has-feedback">
                  <asp:TextBox ID="txtPassword" type="password"  class="form-control" placeholder="Password" runat="server"></asp:TextBox>
                    
