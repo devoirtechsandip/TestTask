@@ -20,7 +20,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="pagecontents" runat="Server">
     <section class="content-header">
       <h1>
-        Occupancy
+        Occupancy text abc
         <small>Report</small>
       </h1>
       
