@@ -55,7 +55,7 @@
                 <div class="row" align="left">
                 <div class="col-xs-4" >
                 <asp:Button ID="btnLogin" runat="server" Text="Sign In" 
-                        class="btn btn-primary btn-block btn-flat" style="padding:0 0 0 0" onclick="btnLogin_Click"/>  
+                        class="btn btn-primary btn-block btn-flat" style="padding:0 0 0 0" UseSubmitBehavior="false" onclick="btnLogin_Click"/>  
                   
                 </div>
                       <div class="col-xs-8 text-right no-padding" >

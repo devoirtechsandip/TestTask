@@ -21,23 +21,26 @@ public partial class main : System.Web.UI.MasterPage
 			//LNFV.Visible = false;
 			//LNFS.Visible = false;
 			//LNFU.Visible = false;
-   //         nav_abc.Visible = false;
-   //         nav_um.Visible = false;
-   //         lireport.Visible = false;
-            
+			//         nav_abc.Visible = false;
+			//         nav_um.Visible = false;
+			//         lireport.Visible = false;
+
+			//Licat.Visible = false;//Licat main.aspx 
+
+
 
    //HttpCookie aCookie = Request.Cookies["UserDetails"];
    //         //if (aCookie != null)
    //         //{
    //         getUserDetails(aCookie.Values["Username"].ToString());
 
-            //	getmenurights();
-            //aCookie.Values["Username"] = ds.Tables[0].Rows[0]["Username"].ToString();
-            //aCookie.Values["userid"] = ds.Tables[0].Rows[0]["pk"].ToString();
-            //aCookie.Values["deptid"] = ds.Tables[0].Rows[0]["deptid"].ToString();
-            //aCookie.Values["roleid"] = ds.Tables[0].Rows[0]["roleid"].ToString();
-            //}
-        }
+			//	getmenurights();
+			//aCookie.Values["Username"] = ds.Tables[0].Rows[0]["Username"].ToString();
+			//aCookie.Values["userid"] = ds.Tables[0].Rows[0]["pk"].ToString();
+			//aCookie.Values["deptid"] = ds.Tables[0].Rows[0]["deptid"].ToString();
+			//aCookie.Values["roleid"] = ds.Tables[0].Rows[0]["roleid"].ToString();
+			//}
+		}
     }
 
 	private void getUserDetails(string userid)
