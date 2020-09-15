@@ -1,34 +1,95 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/main.master" AutoEventWireup="true" CodeFile="PostReply.aspx.cs" Inherits="PostReply" %>
 
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="title" runat="Server">
     <title>Post Reply</title>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="head" runat="Server">
-    <!-- bootstrap wysihtml5 - text editor -->
-    <%--<link rel="stylesheet" href="..\plugins\bootstrap-wysihtml5\bootstrap3-wysihtml5.min.css" />--%>
-    <link href="plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css" rel="stylesheet" />
 
+    <style type="text/css">
+        .sidebar-module {
+            background-color: #f5f5f5 !important;
+            color: #565051 !important;
+            border-radius: 5px;
+            padding: 5px 10px 10px 10px;
+            margin-bottom: 20px;
+            width: 100%;
+            float: left;
+            overflow-x: hidden;
+            border: 1px solid #e3e3e3;
+        }
+
+        .ticket_status_sidebar {
+            margin-bottom: 10px;
+            font-size: 12px;
+        }
+
+        .ticketstatussidebar {
+            border-top: 1px solid #D1D0CE !important;
+            margin-top: 0px !important;
+            margin-bottom: 10px !important;
+        }
+
+        .spanlabel {
+            border-radius: 4px;
+            color: #ffffff;
+            font-weight: bold;
+            padding: 5px 10px;
+            font-size: 10px;
+        }
+
+        .rich_form_container {
+            display: block;
+            background-color: #d2d2d2;
+            padding-top: 30px;
+            padding-bottom: 30px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+        }
+    </style>
+    <script type="text/javascript">
+        $('document').ready(function () {
+            $('#btnPosteRply').click(function () {
+                $('#pnlPostRply').slideDown('slow');
+            });
+        });
+
+        $('document').ready(function () {
+            $('#btnCancel').click(function () {
+                $('#pnlPostRply').slideUp('slow');
+            });
+        });
+    </script>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="pagecontents" runat="Server">
-
+    <section class="content">
+        <div class="row">
+            <div class="col-md-12">
     <div class="box box-info">
         <div class="box-body">
             <div class="row">
-                <div class="col-md-2">
-                    <asp:Button ID="btnBackToTicket" runat="server" PostBackUrl="~/TicketListMaster.aspx" CssClass="btn bg-blue" Text="Back to tickets " />
+                <div class="col-md-9">
+            <div class="row" style="display:inline-block">
+                <div class="col-md-5">
+                    <asp:Button ID="btnBackToTicket" runat="server" PostBackUrl="~/TicketListMaster.aspx" CssClass="btn btn-default btn-sm" Text="Back to tickets " />
                 </div>
-                <div class="col-md-2">
-                    <asp:Button ID="btnCloseTicket" runat="server" OnClick="btnCloseTicket_Click" CssClass="btn bg-blue" Text="Close Ticket" />
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-2">
-                    [Ticket #<asp:Label runat="server" Text="" ID="lblTicketId" Font-Bold="true"></asp:Label>]
+                <div class="col-md-1">
+                    <asp:Button ID="btnCloseTicket" runat="server" OnClick="btnCloseTicket_Click" CssClass="btn btn-default btn-sm" Text="Close Ticket" />
                 </div>
             </div>
+
+                    <h4>
+                     [Ticket #8] Ticket Section<asp:Label runat="server" Text="" ID="lblTicketId" Font-Bold="true"></asp:Label>
+                    </h4>
+                    
+                <hr />
+
             <div class="row">
                 <div class="col-md-12">
-                    <asp:Button ID="btnPosteRply" runat="server" Text="Post Reply" OnClick="btnPosteRply_Click" CssClass="btn bg-olive" Width="92%" Height="50px" Style="margin-left: 28px"></asp:Button>
+                    <asp:Button ID="btnPosteRply" runat="server" Text="Post Reply" OnClick="btnPosteRply_Click" CssClass="btn well btn-default" Width="100%" Style="text-align:center"></asp:Button>
+                    <%--<button runat="server" id="btnPosteRply" class="btn well btn-default" style="text-align:center;width:100%" onclick="slidePanel('<%= pnlPostRply.ClientID %>')">--%>
+                        
                 </div>
             </div>
             <div class="row">
@@ -36,7 +97,8 @@
                     <asp:Panel ID="pnlPostRply" runat="server" Visible="false">
                         <div id="reply_ticket_form_container" class="col-md-12 rich_form_container">
                             <div class="col-md-12 form-group">
-                                <asp:TextBox ID="txtReply" TextMode="MultiLine" Rows="40" runat="server" class="form-control" name="editor" Height="127px"></asp:TextBox>
+
+                                <asp:TextBox ID="txtReply" TextMode="MultiLine" Rows="40" runat="server" class="form-control textarea" name="editor" Height="127px"></asp:TextBox>
 
                             </div>
                             <div class="col-md-12 form-group">
@@ -98,15 +160,14 @@
                     </div>
                 </div>
             </div>
+                    </div>
+                <div class="col-md-3">
             <%-- Ticket Status--%>
-            <div class="well well-sm thread_actions col-md-4">
-
-                <div id="right-sidebar-container" class="col-md-3" style="left: -7px; top: -1px; width: 236px; height: 108px;">
                     <div class="sidebar-module" id="tic_status_sidebar">
-
                         <h4>Ticket Status	</h4>
+                        <hr class="ticketstatussidebar" />
                         <div class="ticket_status_sidebar">
-                            <strong>Status:</strong> <span class="wpsp_admin_label" style="background-color: #d9534f;">Open</span>
+                            <strong>Status:</strong> <span class="spanlabel" style="background-color: #d9534f;">Open</span>
                         </div>
 
                         <div class="ticket_status_sidebar">
@@ -114,21 +175,16 @@
                         </div>
 
                         <div class="ticket_status_sidebar">
-                            <strong>Priority:</strong> <span class="wpsp_admin_label" style="background-color: #5cb85c;">Normal</span>
+                            <strong>Priority:</strong> <span class="spanlabel" style="background-color: #5cb85c;">Normal</span>
                         </div>
                     </div>
-                </div>
-            </div>
-        </div>
-        <%--Ticket Field Sidebar--%>
+            <%--Ticket Field Sidebar--%>
         <div class="sidebar-module" id="tic_fields_sidebar">
-            <div class="well well-sm thread_actions col-md-4">
-                <div class="ticket-field-sidebar" style="width: 204px">
                     <h4>Ticket Fields</h4>
 
-                    <hr class="sidebar-module-hr">
-
-                    <br />
+                    <hr class="ticketstatussidebar"/>
+            <div class="ticket_status_sidebar">
+                      <strong>Attachment:</strong>
                     <%-- <asp:ListBox ID="ListBox1" runat="server" AutoPostBack="True"
             onselectedindexchanged="ListBox1_SelectedIndexChanged" />--%>
                     <div class="table-responsive" style="border: 1px solid #5D7B9D;">
@@ -146,34 +202,42 @@
                         </asp:GridView>
                     </div>
                 </div>
-            </div>
-            <%--User name and Email ID--%>
-            <div class="well well-sm thread_actions col-md-4">
-
-                <div id="right-sidebar-container1" class="col-md-3" style="left: -11px; top: 2px; width: 203px; height: 108px;">
-                    <div class="sidebar-module" id="tic_status_sidebar1">
-
+        </div>
+                    <%--User name and Email ID--%>
+                    <div class="sidebar-module" id="tic_userdetails_sidebar">
                         <h4>User Details	</h4>
+                        <hr class="ticketstatussidebar"/>
                         <div class="ticket_status_sidebar">
                             <strong>Name:&nbsp; </strong>
                             <asp:Label ID="lblname" runat="server" Text=""></asp:Label>
+                            <br />
                             <strong>
-                                <br />
                                 Email ID:&nbsp; </strong>
                             <asp:Label ID="lblemail" runat="server" Text=""></asp:Label>
                         </div>
                         <%--<div class="ticket_status_sidebar" style="width: 228px">
         <strong>Email ID:&nbsp; </strong> dmsahani@gmail.com    </div>--%>
+                    
+                        </div>
                     </div>
                 </div>
-
-
             </div>
-
-        </div>
     </div>
-    </div>
-        </div>
-
+                </div>
+            </div>
+               <!-- CK Editor -->
+<script src="bower_components/ckeditor/ckeditor.js" type="text/javascript"></script>
+    <!-- Bootstrap WYSIHTML5 -->
+<script src="plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+    $(function () {
+        // Replace the <textarea id="editor1"> with a CKEditor
+        // instance, using default configuration.
+        CKEDITOR.replace('editor1')
+        //bootstrap WYSIHTML5 - text editor
+        $('.textarea').wysihtml5()
+    })
+</script>
+        </section>
 </asp:Content>
 
