@@ -171,6 +171,7 @@
           <li id="Li12" runat="server"><a href="PriorityMaster.aspx"><i class="fa fa-plus"></i><span>Priority</span></a></li>
           <li id="Li13" runat="server"><a href="CreateNewTicketMaster.aspx"><i class="fa fa-plus"></i><span>Create New Ticket</span></a></li>
           <li id="Li4" runat="server"><a href="PostReply.aspx"><i class="fa fa-plus"></i><span>Post Reply</span></a></li>
+           <li id="Li2" runat="server"><a href="PostReply1.aspx"><i class="fa fa-plus"></i><span>Post Reply1</span></a></li>
            <li id="Li1" runat="server"><a href="TicketListMaster.aspx"><i class="fa fa-plus"></i><span>Ticket List</span></a></li>
           <li id="Li5" runat="server"><a href="ChangePassword.aspx"><i class="fa fa-key"></i><span>Change Password</span></a></li>
     <li id="nav_members" runat="server"><a href="login.aspx?lg=L@G)UT"><i class="fa fa-unlock"></i><span>Log Out</span></a></li>

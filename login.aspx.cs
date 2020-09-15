@@ -91,7 +91,7 @@ public partial class login : System.Web.UI.Page
                     cnn.Open();
 
                     using (SqlDataAdapter da = new SqlDataAdapter(
-                   "SELECT top 1 * FROM [UserLogin],[UserEmail] where [loginid] = '" + txtUserName.Text.Trim() + "'and [password] = '" + txtPassword.Text.Trim() + "'", cnn))
+                   "SELECT top 1 * FROM [UserLogin] where [loginid] = '" + txtUserName.Text.Trim() + "'and [password] = '" + txtPassword.Text.Trim() + "'", cnn))
                     {
 
                         DataSet ds = new DataSet();
@@ -103,15 +103,15 @@ public partial class login : System.Web.UI.Page
                             if (aCookie != null)
                             {
                                 aCookie.Values["Username"] = ds.Tables[0].Rows[0]["loginid"].ToString();
-                                aCookie.Values["UserEmail"] = ds.Tables[1].Rows[0]["UserEmail"].ToString();
+                                aCookie.Values["UserEmail"] = ds.Tables[0].Rows[0]["UserEmail"].ToString(); 
                             }
                             else
                             {
                                 // no cookie found, create it
                                 aCookie = new HttpCookie("UserDetails");
                                 aCookie.Values.Add("Username", ds.Tables[0].Rows[0]["loginid"].ToString());
-                                aCookie.Values.Add("UserEmail", ds.Tables[1].Rows[0]["UserEmail"].ToString());
-                            }
+                                aCookie.Values.Add("UserEmail", ds.Tables[0].Rows[0]["UserEmail"].ToString());
+                            } 
 
                             // overwrite the cookie
                             Response.Cookies.Add(aCookie);
