@@ -9,6 +9,7 @@ using System.Web.UI.WebControls;
 using System.Globalization;
 using System.Threading;
 using System.Web.UI.HtmlControls;
+using System.Configuration;
 
 public partial class TicketListMaster1 : System.Web.UI.Page
 {
@@ -145,5 +146,32 @@ public partial class TicketListMaster1 : System.Web.UI.Page
     protected void btnchangestatus_Click(object sender, EventArgs e)
     {
         mpechangestatus.Show();
+    }
+
+
+    protected void btnsubmit_Click(object sender, EventArgs e)
+    {
+        try
+        {
+            using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["ESSConnectionString"].ConnectionString))
+            {
+                con.Open();
+
+                using (SqlCommand cmd = new SqlCommand("UPDATE [Status_Master] SET [Status] =@Status WHERE pk='" + lblpk.Text + "'", con))
+                {
+
+                    cmd.Parameters.AddWithValue("@Status", btnsubmit.Text.Trim());
+                    cmd.ExecuteNonQuery();
+                    con.Close(); 
+                    
+                }
+            }
+            BindListView();
+            //clear();
+        }
+        catch (Exception ex)
+        {
+
+        }
     }
 }
