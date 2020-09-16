@@ -12,12 +12,61 @@ using System.Web.UI.HtmlControls;
 
 public partial class TicketListMaster1 : System.Web.UI.Page
 {
+    cls_Common_cls cls = new cls_Common_cls();
+
     protected void Page_Load(object sender, EventArgs e)
     {
         if (!IsPostBack)
         {
             BindListView();
+            BindDDLPriority();
+            BindDDlStatus();
+           }
+    }
 
+    private void BindDDlStatus()
+    {
+        try
+        {
+
+            using (SqlConnection cnn = new SqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings["ESSConnectionString"].ConnectionString))
+            {
+
+                if (cnn.State == ConnectionState.Open)
+                    cnn.Close();
+                cnn.Open();
+                cls.F_BIND_DROPDOWN("SELECT [pk],[Status] FROM [Status_Master] where Valid='1'", ddlstatus, cnn);
+                cnn.Close();
+            }
+
+
+        }
+        catch (Exception ex)
+        {
+            lblmsg.Text = ex.Message;
+        }
+    }
+
+    private void BindDDLPriority()
+    {
+        try
+        {
+
+            using (SqlConnection cnn = new SqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings["ESSConnectionString"].ConnectionString))
+            {
+
+                if (cnn.State == ConnectionState.Open)
+                    cnn.Close();
+                cnn.Open();
+                cls.F_BIND_DROPDOWN("SELECT [pk],[Priority] FROM [Priority_Master] where Valid='1'", ddlPriority, cnn);
+                cnn.Close();
+            }
+
+
+        }
+        catch (Exception ex)
+        {
+            lblmsg.Text = ex.Message;
         }
     }
 
@@ -91,5 +140,10 @@ public partial class TicketListMaster1 : System.Web.UI.Page
     protected void btopen_Click(object sender, EventArgs e)
     {
         Response.Redirect("PostReply.aspx");
+    }
+
+    protected void btnchangestatus_Click(object sender, EventArgs e)
+    {
+        mpechangestatus.Show();
     }
 }

@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="~/main.master" CodeFile="Status.aspx.cs" Inherits="Status" %>
+﻿<%@ Page Title="" Language="C#" AutoEventWireup="true" MasterPageFile="~/main.master" CodeFile="Status.aspx.cs" Inherits="Status" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="title" Runat="Server">
     <title>Status</title>
@@ -38,10 +38,9 @@
                     <div class="box-body">
                         <div class="row">
                             <div class="col-md-4 col-xs-12">
-                                <asp:Label ID="Label2" runat="server" Text="Status"></asp:Label><asp:Label runat="server" ID="Label13" Text=" *" ForeColor="Red" Font-Bold="true"></asp:Label>
+                                <asp:Label ID="Label2" runat="server" Text="Status"></asp:Label>
                                 <asp:TextBox ID="txtstatus" runat="server" placeholder="Enter Status" CssClass="form-control"></asp:TextBox>
-                                <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ErrorMessage="Status is required." ControlToValidate="txtstatus" ForeColor="Red" Display="Static"></asp:RequiredFieldValidator>
-
+                                
                             </div>
                           
                             <div class="col-md-4 col-xs-12">
@@ -49,14 +48,14 @@
                                 <asp:Button ID="submit" runat="server" Text="Submit" class="btn btn-primary btnsubmit margin" OnClick="submit_Click" />
                                 <asp:Button ID="update" runat="server" Text="Update" class="btn btn-primary btnsubmit margin" Visible="false" OnClick="update_Click" />
                             </div>
-                            <asp:Label ID="lblpk" runat="server" Text="pk" Visible="false"></asp:Label>
-                            <asp:Label ID="lblmsg" runat="server"></asp:Label>
+                            <asp:Label ID="lbllpk" runat="server" Text="pk" Visible="false"></asp:Label>
+                            <asp:Label ID="lbllmsg" runat="server"></asp:Label>
 
                         </div>
                         <br />
 
                         <div class="table-responsive" style="border: 1px solid #5D7B9D;">
-                            <asp:ListView ID="lstdc" runat="server" OnItemCommand="lstdc_ItemCommand" OnItemUpdating="lstdc_ItemUpdating" OnItemDeleting="lstdc_ItemDeleting">
+                            <asp:ListView ID="lstdcc" runat="server" OnItemCommand="lstdcc_ItemCommand" OnItemUpdating="lstdcc_ItemUpdating" OnItemDeleting="lstdcc_ItemDeleting">
                                 <layouttemplate>
                                     <table class="table no-margin table-bordered table-hover">
                                         <thead style="background: #5D7B9D; color: white;">

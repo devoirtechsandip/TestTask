@@ -1,6 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/main.master" AutoEventWireup="true" CodeFile="TicketListMaster1.aspx.cs" Inherits="TicketListMaster1" %>
 
-<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="ajaxToolkit" %>
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
 
 
 <asp:Content ID="Content1" ContentPlaceHolderID="title" runat="Server">
@@ -10,7 +10,7 @@
     <!-- bootstrap wysihtml5 - text editor -->
     <%--<link rel="stylesheet" href="..\plugins\bootstrap-wysihtml5\bootstrap3-wysihtml5.min.css" />--%>
     <link href="plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css" rel="stylesheet" />
-
+    <link href="dist/css/licenselists.css" rel="Stylesheet" type="text/css" />
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="pagecontents" runat="Server">
 
@@ -57,10 +57,9 @@
                     <div class="col-md-9">
             <div class="row" style="display:inline-block">
                 <div class="col-md-5">
-                    <asp:Button ID="btnchangestatus" runat="server"  CssClass="btn btn-default btn-sm" Text="Change Status " />
+                    <asp:Button ID="btnchangestatus" runat="server"  CssClass="btn btn-default btn-sm" Text="Change Status " OnClick="btnchangestatus_Click" />
                     <asp:Label ID="lblHidden" runat="server" Text=""></asp:Label>
-        <ajaxToolkit:ModalPopupExtender ID="mpePopUp" runat="server" TargetControlID="lblHidden" PopupControlID="divPopUp" BackgroundCssClass="modalBackground"></ajaxToolkit:ModalPopupExtender>
-
+       
                 </div>
                 <div class="col-md-1">
                     <asp:Button ID="btndelete" runat="server"  CssClass="btn btn-default btn-sm" Text="Delete" />
@@ -68,6 +67,36 @@
             </div>
                       
                        </div> 
+
+                    <!-- Change status and priority modal popup -->
+                   <asp:Button ID="btnvstatus" runat="server" style="display:none" ></asp:Button>
+                <cc1:ModalPopupExtender ID="mpechangestatus" BehaviorID="mpestatus" runat="server"
+    PopupControlID="pnlstatus" TargetControlID="btnvstatus" BackgroundCssClass="modal-lg" CancelControlID="btncancel">
+</cc1:ModalPopupExtender>
+                <asp:Panel ID="pnlstatus" runat="server" CssClass="modalPopup upload" Style="display: none">
+    <div class="header">
+        <asp:Label ID="Label7" runat="server"></asp:Label> Confirmation
+    </div>
+    <div class="body">
+         <div class="col-md-12">
+             <asp:Label ID="Label1" runat="server" Text="Status"></asp:Label>
+             <asp:DropDownList ID="ddlstatus" ValidationGroup="vg" runat="server" CssClass="form-control"></asp:DropDownList>
+    </div>
+         <div class="col-md-12">
+             <asp:Label ID="Label2" runat="server" Text="Priority"></asp:Label>
+             <asp:DropDownList ID="ddlPriority" ValidationGroup="vg" runat="server" CssClass="form-control"></asp:DropDownList>
+    </div>
+
+                
+        </div>
+    <div class="footer">
+        <div class="col-md-offset-6 col-md-4 col-xs-12">
+        <asp:Button ID="btncancel" runat="server" Text="Close" CssClass="btn btn-default"></asp:Button>
+            </div>
+    </div>
+</asp:Panel>
+                    <!-- End Change status and priority modal popup -->
+
                             <asp:Label ID="lblpk" runat="server" Text="pk" Visible="false"></asp:Label>
                             <asp:Label ID="lblmsg" runat="server" ForeColor="Red"></asp:Label> 
                         
@@ -149,7 +178,7 @@
         </div>
                  
                 
-<div id="divPopUp" class="pnlBackGround">
+<%--<div id="divPopUp" class="pnlBackGround">
      <div class="row">
                              <div class="col-md-12">
                                 <asp:Label ID="Label3" runat="server" Text="Status"></asp:Label><asp:Label runat="server" ID="Label5" Text=" *" ForeColor="Red" Font-Bold="true"></asp:Label>
@@ -167,7 +196,7 @@
           <div id="DivbtnOK" class="buttonOK"><asp:Button id="btnOk" runat="server" text="Ok" /></div>
           <div id="Divbtncancel" class="buttonOK"><asp:Button id="btnCancel" runat="server" text="Cancel" /></div>
      </div>
-</div>
+</div>--%>
         <!-- CK Editor -->
 <script src="bower_components/ckeditor/ckeditor.js" type="text/javascript"></script>
     <!-- Bootstrap WYSIHTML5 -->
