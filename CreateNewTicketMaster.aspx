@@ -55,6 +55,8 @@
 
                         
                         <div class="row">
+                        </div>
+                        <br /> 
                             <div class="col-md-12">
                                 <asp:Label ID="Label7" runat="server" Text="Description"></asp:Label><asp:Label runat="server" ID="Label10" Text=" *" ForeColor="Red" Font-Bold="true"></asp:Label>
                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator3" Display="Static" ForeColor="Red" runat="server" ControlToValidate="txtTextArea" ErrorMessage="Please select a Description."></asp:RequiredFieldValidator>

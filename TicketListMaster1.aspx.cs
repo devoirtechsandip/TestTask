@@ -10,10 +10,12 @@ using System.Globalization;
 using System.Threading;
 using System.Web.UI.HtmlControls;
 using System.Configuration;
+using AjaxControlToolkit;
 
 public partial class TicketListMaster1 : System.Web.UI.Page
 {
     cls_Common_cls cls = new cls_Common_cls();
+    private string action;
 
     protected void Page_Load(object sender, EventArgs e)
     {
@@ -22,7 +24,7 @@ public partial class TicketListMaster1 : System.Web.UI.Page
             BindListView();
             BindDDLPriority();
             BindDDlStatus();
-           }
+        }
     }
 
     private void BindDDlStatus()
@@ -149,29 +151,42 @@ public partial class TicketListMaster1 : System.Web.UI.Page
     }
 
 
-    protected void btnsubmit_Click(object sender, EventArgs e)
-    {
-        try
+    protected void btnupdate_Click(object sender, EventArgs e)
+    { // For changing status nd priority
+        foreach (ListViewDataItem item in lstdc.Items)
         {
-            using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["ESSConnectionString"].ConnectionString))
+            var chkpk = item.FindControl("chkpk") as System.Web.UI.HtmlControls.HtmlInputCheckBox;
+            if (chkpk != null && chkpk.Checked)
             {
-                con.Open();
-
-                using (SqlCommand cmd = new SqlCommand("UPDATE [Status_Master] SET [Status] =@Status WHERE pk='" + lblpk.Text + "'", con))
+                int value = Convert.ToInt32(chkpk.Value);
+                using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["ESSConnectionString"].ConnectionString))
                 {
+                    con.Open();
 
-                    cmd.Parameters.AddWithValue("@Status", btnsubmit.Text.Trim());
-                    cmd.ExecuteNonQuery();
-                    con.Close(); 
-                    
+                    using (SqlCommand cmd = new SqlCommand("UPDATE [CreateNewTicket_Master] SET [PriorityId] =@PriorityId, [Status] = @Status WHERE pk='" + value + "'", con))
+                    {
+
+                        cmd.Parameters.AddWithValue("@PriorityId", ddlPriority.SelectedItem.Text.Trim());
+                        cmd.Parameters.AddWithValue("@Status", ddlstatus.SelectedItem.Text.Trim());
+                        cmd.ExecuteNonQuery();
+                        con.Close(); 
+                    }
                 }
+                BindListView();
+               // clear();
             }
-            BindListView();
-            //clear();
-        }
-        catch (Exception ex)
-        {
-
         }
     }
+    //public void clear()
+    //{
+    //    try
+    //    {
+    //        ddlPriority.Text = string.Empty;
+    //        ddlstatus.Text = string.Empty;
+
+    //    }
+    //    catch (Exception ex)
+    //    { }
+    //}
 }
+   

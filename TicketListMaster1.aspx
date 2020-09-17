@@ -91,7 +91,7 @@
         </div>
                      <div class="footer">
         <div class="col-md-offset-6 col-md-4 col-xs-12">
-        <asp:Button ID="btnsubmit" runat="server" Text="Submit" Onclick="btnsubmit_Click" CssClass="btn btn-default"></asp:Button>
+        <asp:Button ID="btnupdate" runat="server" Text="Update" Onclick="btnupdate_Click" CssClass="btn btn-default"></asp:Button>
             </div>
         <div class="col-md-offset-6 col-md-4 col-xs-12">
         <asp:Button ID="btncancel" runat="server" Text="Close" CssClass="btn btn-default"></asp:Button>
@@ -116,9 +116,9 @@
                                     <table class="table no-margin table-bordered table-hover">
                                         <thead style="background: #5D7B9D; color: white;">
                                             <tr>
-                                                <th><asp:CheckBox ID="CheckBox1" runat="server"></asp:CheckBox></th>
+                                                <th><asp:CheckBox ID="checkall" runat="server"></asp:CheckBox></th>
                                                 <th>Id</th>
-                                                <th>Status</th>
+                                                <th>Status</th> 
                                                 <th>Subject</th> 
                                                 <th>Raised By</th>
                                                 <th>Category</th>
@@ -133,9 +133,10 @@
                                 </LayoutTemplate>
                                 <ItemTemplate>
                                     <tr >
-                                          <td><asp:CheckBox ID="CheckBox1" runat="server"></asp:CheckBox></td>
+                                          <td><input id="chkpk" value='<%# Eval("pk") %>' type="checkbox" runat="server" /></td>
                                           <td onclick="window.location.href = 'PostReply.aspx?pk=<%# Eval("pk") %>';"><%#Eval("pk")%></td>
-                                          <td onclick="window.location.href = 'PostReply.aspx?pk=<%# Eval("pk") %>';"> <asp:Label ID="btopen" runat="server" class="wpsp_admin_label" style="background-color:#d9534f;" Text="Open" /><%#Eval("Status")%></td>
+                                          <td onclick="window.location.href = 'PostReply.aspx?pk=<%# Eval("pk") %>';"> 
+                                              <asp:Label ID="btopen" runat="server" class="wpsp_admin_label" style="background-color:#d9534f;" /><%#Eval("Status")%></td>
                                           <td onclick="window.location.href = 'PostReply.aspx?pk=<%# Eval("pk") %>';"><%#Eval("Subject")%></td>
                                           <td onclick="window.location.href = 'PostReply.aspx?pk=<%# Eval("pk") %>';"></td>
                                           <td onclick="window.location.href = 'PostReply.aspx?pk=<%# Eval("pk") %>';"><%#Eval("CategoryId")%></td>
