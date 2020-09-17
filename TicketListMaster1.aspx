@@ -136,12 +136,13 @@
                                           <td><input id="chkpk" value='<%# Eval("pk") %>' type="checkbox" runat="server" /></td>
                                           <td onclick="window.location.href = 'PostReply.aspx?pk=<%# Eval("pk") %>';"><%#Eval("pk")%></td>
                                           <td onclick="window.location.href = 'PostReply.aspx?pk=<%# Eval("pk") %>';"> 
-                                              <asp:Label ID="btopen" runat="server" class="wpsp_admin_label" style="background-color:#d9534f;" /><%#Eval("Status")%></td>
+                                          <span class="label <%#Eval("stat") %>" style="line-height:2.6;padding:6.6px;"><%#Eval("Status")%></td>
                                           <td onclick="window.location.href = 'PostReply.aspx?pk=<%# Eval("pk") %>';"><%#Eval("Subject")%></td>
                                           <td onclick="window.location.href = 'PostReply.aspx?pk=<%# Eval("pk") %>';"></td>
                                           <td onclick="window.location.href = 'PostReply.aspx?pk=<%# Eval("pk") %>';"><%#Eval("CategoryId")%></td>
                                           <td onclick="window.location.href = 'PostReply.aspx?pk=<%# Eval("pk") %>';"></td>
-                                          <td onclick="window.location.href = 'PostReply.aspx?pk=<%# Eval("pk") %>';"><%#Eval("PriorityId")%></td>
+                                          <td onclick="window.location.href = 'PostReply.aspx?pk=<%# Eval("pk") %>';">
+                                           <span class="label <%#Eval("prior") %>" style="line-height:2.6;padding:6.6px;"><%#Eval("PriorityId")%></td>
                                           <td onclick="window.location.href = 'PostReply.aspx?pk=<%# Eval("pk") %>';"><%#Eval("DateUpdated")%>  </td>
                                        </tr>
                                 </ItemTemplate>
