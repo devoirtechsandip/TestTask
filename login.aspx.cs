@@ -31,6 +31,8 @@ public partial class login : System.Web.UI.Page
                         myCookie.Expires = DateTime.Now.AddDays(-1d);
                         Response.Cookies.Add(myCookie);
                     }
+                   
+
                 }
             }
 
@@ -104,6 +106,7 @@ public partial class login : System.Web.UI.Page
                             {
                                 aCookie.Values["Username"] = ds.Tables[0].Rows[0]["loginid"].ToString();
                                 aCookie.Values["UserEmail"] = ds.Tables[0].Rows[0]["UserEmail"].ToString();
+                                aCookie.Values["Role"] = ds.Tables[0].Rows[0]["Role"].ToString();
                             }
                             else
                             {
@@ -111,12 +114,23 @@ public partial class login : System.Web.UI.Page
                                 aCookie = new HttpCookie("UserDetails");
                                 aCookie.Values.Add("Username", ds.Tables[0].Rows[0]["loginid"].ToString());
                                 aCookie.Values.Add("UserEmail", ds.Tables[0].Rows[0]["UserEmail"].ToString());
+                                aCookie.Values.Add("Role", ds.Tables[0].Rows[0]["Role"].ToString());
+                            }
+                            if (aCookie["Role"] == "Admin")
+                            {
+                                Response.Redirect("CreateNewTicketMaster.aspx");
+                            }
+
+                            if (aCookie["Role"] == "User")
+                            {
+                               
+                                Response.Redirect("CreateNewTicketMaster.aspx");
                             }
 
                             // overwrite the cookie
-                            Response.Cookies.Add(aCookie);
+                           // Response.Cookies.Add(aCookie);
 
-                            Response.Redirect("CreateNewTicketMaster.aspx");
+                            //Response.Redirect("CreateNewTicketMaster.aspx");
                         }
                         else
                         {

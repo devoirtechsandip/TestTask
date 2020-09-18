@@ -62,7 +62,7 @@
        
                 </div>
                 <div class="col-md-1">
-                    <asp:Button ID="btndelete" runat="server"  CssClass="btn btn-default btn-sm" Text="Delete" />
+                    <asp:Button ID="btndelete" runat="server" OnClick="btndelete_Click" CssClass="btn btn-default btn-sm" Text="Delete" />
                 </div>
             </div>
                       
@@ -90,10 +90,10 @@
                 
         </div>
                      <div class="footer">
-        <div class="col-md-offset-6 col-md-4 col-xs-12">
+        <div class="col-md-offset-4 col-md-2 col-xs-12">
         <asp:Button ID="btnupdate" runat="server" Text="Update" Onclick="btnupdate_Click" CssClass="btn btn-default"></asp:Button>
             </div>
-        <div class="col-md-offset-6 col-md-4 col-xs-12">
+        <div class="col-md-2 col-xs-12">
         <asp:Button ID="btncancel" runat="server" Text="Close" CssClass="btn btn-default"></asp:Button>
             </div>
     </div>

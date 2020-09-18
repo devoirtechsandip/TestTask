@@ -140,16 +140,16 @@
       <!-- Sidebar Menu -->
       <ul class="sidebar-menu">
         <li class="header">Mumbai Metro One Ad-Track</li>
-        <li id="Li1" runat="server" class="treeview"><a href="Default.aspx"><i class="fa fa-home"></i><span>Home</span></a></li>
-        <li id="Licat" runat="server"><a href="CategoryMaster.aspx"><i class="fa fa-plus"></i><span>Category</span></a></li>
+        <li id="lihome" runat="server" class="treeview"><a href="Default.aspx"><i class="fa fa-home"></i><span>Home</span></a></li>
+       <%-- <li id="Licat" runat="server"><a href="CategoryMaster.aspx"><i class="fa fa-plus"></i><span>Category</span></a></li>
         <li id="Liprio" runat="server"><a href="PriorityMaster.aspx"><i class="fa fa-plus"></i><span>Priority</span></a></li>
-        <li id="Litic" runat="server"><a href="CreateNewTicketMaster.aspx"><i class="fa fa-plus"></i><span>Create New Ticket</span></a></li>
+       --%> <li id="linewtm" runat="server"><a href="CreateNewTicketMaster.aspx" ><i class="fa fa-plus"></i><span>Create New Ticket</span></a></li>
         <li id="Liprep" runat="server"><a href="PostReply.aspx"><i class="fa fa-plus"></i><span>Post Reply</span></a></li>
-          <li id="Li2" runat="server"><a href="PostReply1.aspx"><i class="fa fa-plus"></i><span>Post Reply1</span></a></li>
-        <li id="Liticlst" runat="server"><a href="TicketListMaster.aspx"><i class="fa fa-plus"></i><span>Ticket List</span></a></li>
-          <li id="Li3" runat="server"><a href="TicketListMaster1.aspx"><i class="fa fa-plus"></i><span>Ticket List1</span></a></li>
-        <li id="Lichpwd" runat="server"><a href="ChangePassword.aspx"><i class="fa fa-key"></i><span>Change Password</span></a></li>
-        <li id="liout" runat="server"><a href="login.aspx?lg=L@G)UT"><i class="fa fa-unlock"></i><span>Log Out</span></a></li>
+          <li id="lipostreply1" runat="server"><a href="PostReply1.aspx"><i class="fa fa-plus"></i><span>Post Reply1</span></a></li>
+        <li id="liticketlist" runat="server" ><a href="TicketListMaster.aspx"><i class="fa fa-plus"></i><span>Ticket List</span></a></li>
+          <li id="liticketlist1" runat="server"><a href="TicketListMaster1.aspx"><i class="fa fa-plus"></i><span>Ticket List1</span></a></li>
+        <li id="Lichpwd" runat="server" ><a href="ChangePassword.aspx"><i class="fa fa-key"></i><span>Change Password</span></a></li>
+        <li id="liout" runat="server" ><a href="login.aspx?lg=L@G)UT"><i class="fa fa-unlock"></i><span>Log Out</span></a></li>
       </ul>
       <!-- /.sidebar-menu -->
     </section>

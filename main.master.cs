@@ -9,38 +9,62 @@ using System.Web.UI.WebControls;
 
 public partial class main : System.Web.UI.MasterPage
 {
-	protected void Page_Load(object sender, EventArgs e)
+    public string Role { get; private set; }
+
+    protected void Page_Load(object sender, EventArgs e)
 	{
-		if (!IsPostBack)
-		{
-			//LiCC.Visible = false;
-			//LiSC.Visible = false;
-			//LiCB.Visible = false;
-
-			//LNFC.Visible = false;
-			//LNFV.Visible = false;
-			//LNFS.Visible = false;
-			//LNFU.Visible = false;
-			//         nav_abc.Visible = false;
-			//         nav_um.Visible = false;
-			//         lireport.Visible = false;
-
-			//Licat.Visible = false;//Licat main.aspx 
+        lipostreply1.Visible = false;
+        liticketlist.Visible = false;
+        liticketlist1.Visible = false;
+        linewtm.Visible = false;
+        Liprep.Visible = false;
+        linewtm.Visible = false;
 
 
+        if (!IsPostBack)
+        {
+            HttpCookie aCookie = Request.Cookies["UserDetails"];
+            if (aCookie["Role"] == "User")
 
-   //HttpCookie aCookie = Request.Cookies["UserDetails"];
-   //         //if (aCookie != null)
-   //         //{
-   //         getUserDetails(aCookie.Values["Username"].ToString());
+            {
+                lipostreply1.Visible = true;
+                liticketlist.Visible = true;
+                linewtm.Visible = true;
+            }
+            else if (aCookie["Role"] == "Admin")
+            {
+                Liprep.Visible = true;
+                liticketlist1.Visible = true;
+                linewtm.Visible = true;
+            }
+            //LiCC.Visible = false;
+            //LiSC.Visible = false;
+            //LiCB.Visible = false;
 
-			//	getmenurights();
-			//aCookie.Values["Username"] = ds.Tables[0].Rows[0]["Username"].ToString();
-			//aCookie.Values["userid"] = ds.Tables[0].Rows[0]["pk"].ToString();
-			//aCookie.Values["deptid"] = ds.Tables[0].Rows[0]["deptid"].ToString();
-			//aCookie.Values["roleid"] = ds.Tables[0].Rows[0]["roleid"].ToString();
-			//}
-		}
+                //LNFC.Visible = false;
+                //LNFV.Visible = false;
+                //LNFS.Visible = false;
+                //LNFU.Visible = false;
+                //         nav_abc.Visible = false;
+                //         nav_um.Visible = false;
+                //         lireport.Visible = false;
+
+                //Licat.Visible = false;//Licat main.aspx 
+
+
+
+                //HttpCookie aCookie = Request.Cookies["UserDetails"];
+                //         //if (aCookie != null)
+                //         //{
+                //         getUserDetails(aCookie.Values["Username"].ToString());
+
+                //	getmenurights();
+                //aCookie.Values["Username"] = ds.Tables[0].Rows[0]["Username"].ToString();
+                //aCookie.Values["userid"] = ds.Tables[0].Rows[0]["pk"].ToString();
+                //aCookie.Values["deptid"] = ds.Tables[0].Rows[0]["deptid"].ToString();
+                //aCookie.Values["roleid"] = ds.Tables[0].Rows[0]["roleid"].ToString();
+                //}
+        }
     }
 
 	private void getUserDetails(string userid)

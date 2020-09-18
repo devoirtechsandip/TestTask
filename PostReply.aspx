@@ -215,9 +215,7 @@
                                 Email ID:&nbsp; </strong>
                             <asp:Label ID="lblemail" runat="server" Text=""></asp:Label>
                         </div>
-                        <%--<div class="ticket_status_sidebar" style="width: 228px">
-        <strong>Email ID:&nbsp; </strong> dmsahani@gmail.com    </div>--%>
-                    
+                       
                         </div>
                     </div>
                 </div>

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
@@ -38,7 +38,7 @@ public partial class TicketListMaster1 : System.Web.UI.Page
                 if (cnn.State == ConnectionState.Open)
                     cnn.Close();
                 cnn.Open();
-                cls.F_BIND_DROPDOWN("SELECT [pk],[Status] FROM [Status_Master] where Valid='1'", ddlstatus, cnn);
+                cls.F_BIND_DROPDOWN("SELECT [pk],[Status] FROM [Status_Master] where Valid='1'"  , ddlstatus, cnn);
                 cnn.Close();
             }
 
@@ -87,7 +87,7 @@ public partial class TicketListMaster1 : System.Web.UI.Page
                 using (SqlCommand cmd = new SqlCommand())
                 {
 
-                    cmd.CommandText = "SELECT [pk],[Subject],[Description],[CategoryId],[PriorityId],[Status],[DateUpdated], case when Status = 'Open' then 'bg-red' else case when Status = 'Pending' then 'bg-yellow' else 'bg-green' end end [stat] , case when PriorityId = 'High' then 'bg-red' else case when PriorityId = 'Medium' then 'bg-yellow' else 'bg-green' end end [prior] from [CreateNewTicket_Master] where Valid=1 and DeleteIt = 'N'";
+                    cmd.CommandText = "SELECT [pk],[Subject],[Description],[CategoryId],[PriorityId],[Status],[DateUpdated], case when Status = 'Open' then 'bg-red' else case when Status = 'Pending' then 'bg-yellow' else 'bg-green' end end [stat] , case when PriorityId = 'High' then 'bg-red' else case when PriorityId = 'Medium' then 'bg-yellow' else 'bg-green' end end [prior] from [CreateNewTicket_Master] where Valid=1 and DeleteIt ='N'";
                     cmd.Connection = cnn;
                     using (SqlDataAdapter da = new SqlDataAdapter(cmd))
                     {
@@ -177,21 +177,10 @@ public partial class TicketListMaster1 : System.Web.UI.Page
             }
         }
     }
-    //public void clear()
-    //{
-    //    try
-    //    {
-    //        ddlPriority.Text = string.Empty;
-    //        ddlstatus.Text = string.Empty;
-
-    //    }
-    //    catch (Exception ex)
-    //    { }
-    //}
-
+     //To Delete Record using 
     protected void btndelete_Click(object sender, EventArgs e)
     {
-         foreach (ListViewDataItem item in lstdc.Items)
+        foreach (ListViewDataItem item in lstdc.Items)
         {
             var chkpk = item.FindControl("chkpk") as System.Web.UI.HtmlControls.HtmlInputCheckBox;
             if (chkpk != null && chkpk.Checked)
@@ -201,7 +190,7 @@ public partial class TicketListMaster1 : System.Web.UI.Page
                 {
                     con.Open();
 
-                    using (SqlCommand cmd = new SqlCommand("UPDATE [CreateNewTicket_Master] SET [DeleteIt] =@DeleteIt WHERE pk='" + value + "'", con))
+                    using (SqlCommand cmd = new SqlCommand("UPDATE [CreateNewTicket_Master] SET [DeleteIt] =@DeleteIt WHERE pk='" + chkpk + "'", con))
                     {
                         cmd.Parameters.AddWithValue("@DeleteIt", "Y");
                         cmd.ExecuteNonQuery();
@@ -212,7 +201,6 @@ public partial class TicketListMaster1 : System.Web.UI.Page
                 // clear();
             }
         }
-
     }
 }
    
