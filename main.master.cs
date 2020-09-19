@@ -9,7 +9,7 @@ using System.Web.UI.WebControls;
 
 public partial class main : System.Web.UI.MasterPage
 {
-    public string Role { get; private set; }
+    //public string Role { get; private set; }
 
     protected void Page_Load(object sender, EventArgs e)
 	{
@@ -24,19 +24,25 @@ public partial class main : System.Web.UI.MasterPage
         if (!IsPostBack)
         {
             HttpCookie aCookie = Request.Cookies["UserDetails"];
-            if (aCookie["Role"] == "User")
 
+            if (aCookie != null)
             {
-                lipostreply1.Visible = true;
-                liticketlist.Visible = true;
-                linewtm.Visible = true;
+                if (aCookie["Role"] == "User")
+
+                {
+                    lipostreply1.Visible = true;
+                    liticketlist.Visible = true;
+                    linewtm.Visible = true;
+                }
+                else if (aCookie["Role"] == "Admin")
+                {
+                    Liprep.Visible = true;
+                    liticketlist1.Visible = true;
+                    linewtm.Visible = true;
+                }
             }
-            else if (aCookie["Role"] == "Admin")
-            {
-                Liprep.Visible = true;
-                liticketlist1.Visible = true;
-                linewtm.Visible = true;
-            }
+
+            
             //LiCC.Visible = false;
             //LiSC.Visible = false;
             //LiCB.Visible = false;

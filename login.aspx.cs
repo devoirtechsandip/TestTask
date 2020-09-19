@@ -116,21 +116,11 @@ public partial class login : System.Web.UI.Page
                                 aCookie.Values.Add("UserEmail", ds.Tables[0].Rows[0]["UserEmail"].ToString());
                                 aCookie.Values.Add("Role", ds.Tables[0].Rows[0]["Role"].ToString());
                             }
-                            if (aCookie["Role"] == "Admin")
-                            {
-                                Response.Redirect("CreateNewTicketMaster.aspx");
-                            }
-
-                            if (aCookie["Role"] == "User")
-                            {
-                               
-                                Response.Redirect("CreateNewTicketMaster.aspx");
-                            }
-
+                            
                             // overwrite the cookie
-                           // Response.Cookies.Add(aCookie);
+                           Response.Cookies.Add(aCookie);
 
-                            //Response.Redirect("CreateNewTicketMaster.aspx");
+                            Response.Redirect("CreateNewTicketMaster.aspx");
                         }
                         else
                         {

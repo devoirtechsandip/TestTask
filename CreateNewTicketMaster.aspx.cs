@@ -15,7 +15,7 @@ public partial class CreateNewTicketMaster : System.Web.UI.Page
 {
     cls_Common_cls cls = new cls_Common_cls();
     SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ESSConnectionString"].ConnectionString);
-    
+
     protected void Page_Load(object sender, EventArgs e)
     {
         if (!IsPostBack)
@@ -25,7 +25,7 @@ public partial class CreateNewTicketMaster : System.Web.UI.Page
             FillCapctha();
         }
     }
-    void FillCapctha() 
+    void FillCapctha()
     {
 
         try
@@ -107,7 +107,7 @@ public partial class CreateNewTicketMaster : System.Web.UI.Page
     {
         txtsubject.Text = "";
         txtTextArea.Value = "";
-        ddlPriority.SelectedValue= "1";
+        ddlPriority.SelectedValue = "1";
         ddlCategory.SelectedValue = "1";
         //CheckBox1.Checked = false;
         FileUpload1.Dispose();
@@ -126,6 +126,13 @@ public partial class CreateNewTicketMaster : System.Web.UI.Page
             {
                 InsertTicket();
                 InsertFile();
+                HttpCookie aCookie = Request.Cookies["UserDetails"];
+                //redirected page according to role
+                if (aCookie != null)
+                {
+                    if (aCookie["Role"] == "User") Response.Redirect("TicketListMaster.aspx");
+                    else if (aCookie["Role"] == "Admin") Response.Redirect("TicketListMaster1.aspx");
+                }
             }
         }
         else return;
@@ -135,6 +142,13 @@ public partial class CreateNewTicketMaster : System.Web.UI.Page
     {
         try
         {
+            HttpCookie aCookie = Request.Cookies["UserDetails"];
+            string Role = null; //took variable to store role
+            if (aCookie != null)
+            {
+                if (aCookie["Role"] == "User") Role = aCookie["Role"];
+                else if (aCookie["Role"] == "Admin") Role = aCookie["Role"];
+            }
             SqlConnection cnn = new SqlConnection(ConfigurationManager.ConnectionStrings["ESSConnectionString"].ConnectionString);
             string query = "sp_InsertCreateNewTicket";         //Stored Procedure name   
             SqlCommand com = new SqlCommand(query, cnn);  //creating  SqlCommand  object  
@@ -145,12 +159,14 @@ public partial class CreateNewTicketMaster : System.Web.UI.Page
             com.Parameters.AddWithValue("@Description ", txtTextArea.Value.ToString());
             com.Parameters.AddWithValue("@PriorityId ", ddlPriority.SelectedItem.ToString());
             com.Parameters.AddWithValue("@CategoryId ", ddlCategory.SelectedItem.ToString());
-            com.Parameters.AddWithValue("@Status", System.DBNull.Value);
+            com.Parameters.AddWithValue("@Status", "Open");
             com.Parameters.AddWithValue("@DateUpdated", DateTime.Now);
             com.Parameters.AddWithValue("@pk", System.DBNull.Value);
+            com.Parameters.AddWithValue("@DeleteIt", "N");
+            com.Parameters.AddWithValue("@Role", Role);
             cnn.Open();
-            com.ExecuteNonQuery();                     //executing the sqlcommand  
-            cnn.Close();
+            com.ExecuteNonQuery(); //executing the sqlcommand  
+            cnn.Close(); 
         }
         catch (Exception ex) { }
     }
@@ -162,19 +178,6 @@ public partial class CreateNewTicketMaster : System.Web.UI.Page
         {
             string folderPath = Server.MapPath("~/Files/");
             string filename = System.DateTime.Now.ToString("ddMMyyyyHHmmss") + Path.GetExtension(postedFile.FileName);
-
-            //Check whether Directory (Folder) exists.
-            //if (System.IO.File.Exists(folderPath))
-            //{
-            //    If Directory(Folder) does not exists.Create it.
-            //    Directory.CreateDirectory(folderPath);
-            //}
-            //else
-            //{
-            //    Save the File to the Directory(Folder).
-            //    FileUpload1.SaveAs(folderPath + filename);
-            //    Path.Combine(folderPath, filename);
-            //}
 
             postedFile.SaveAs(Path.Combine(folderPath, filename));
 
@@ -199,7 +202,6 @@ public partial class CreateNewTicketMaster : System.Web.UI.Page
                 }
             }
         }
-        Response.Redirect("TicketListMaster.aspx");
     }
 
     protected int getTicketId()
@@ -216,19 +218,6 @@ public partial class CreateNewTicketMaster : System.Web.UI.Page
         }
         return TicketId;
     }
-
-    //protected void Unnamed1_Click(object sender, ImageClickEventArgs e)
-    //{
-    //    Captcha1.ValidateCaptcha(txtcapcha.Text.Trim());
-    //    e.IsValid = Captcha1.UserValidated;
-    //    if (e.IsValid)
-    //    {
-    //        ClientScript.RegisterStartupScript(this.GetType(), "alert", "alert('Valid Captcha!');", true);
-    //    }
-    //}
-
-
-
     protected void btnRefresh_Click(object sender, EventArgs e)
     {
         FillCapctha();

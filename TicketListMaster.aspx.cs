@@ -74,7 +74,7 @@ public partial class TicketListMaster : System.Web.UI.Page
                 using (SqlCommand cmd = new SqlCommand())
                 {
 
-                    cmd.CommandText = "SELECT * FROM [CreateNewTicket_Master] where Valid=1";
+                    cmd.CommandText = "SELECT * FROM [CreateNewTicket_Master] where Valid=1 and DeleteIt = 'N' and Role='User'"; 
                     cmd.Connection = cnn;
                     using (SqlDataAdapter da = new SqlDataAdapter(cmd))
                     {

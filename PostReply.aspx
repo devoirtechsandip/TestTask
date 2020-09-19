@@ -72,7 +72,7 @@
                 <div class="col-md-9">
             <div class="row" style="display:inline-block">
                 <div class="col-md-5">
-                    <asp:Button ID="btnBackToTicket" runat="server" PostBackUrl="~/TicketListMaster.aspx" CssClass="btn btn-default btn-sm" Text="Back to tickets " />
+                    <asp:Button ID="btnBackToTicket" runat="server" PostBackUrl="~/TicketListMaster1.aspx" CssClass="btn btn-default btn-sm" Text="Back to tickets " />
                 </div>
                 <div class="col-md-1">
                     <asp:Button ID="btnCloseTicket" runat="server" OnClick="btnCloseTicket_Click" CssClass="btn btn-default btn-sm" Text="Close Ticket" />
@@ -80,7 +80,7 @@
             </div>
 
                     <h4>
-                     [Ticket #8] Ticket Section<asp:Label runat="server" Text="" ID="lblTicketId" Font-Bold="true"></asp:Label>
+                     Ticket #<asp:Label runat="server" Text="" ID="lblTicketId" Font-Bold="true"></asp:Label>
                     </h4>
                     
                 <hr />
@@ -167,6 +167,7 @@
                         <h4>Ticket Status	</h4>
                         <hr class="ticketstatussidebar" />
                         <div class="ticket_status_sidebar">
+                           <%--  <span class="label <%#Eval("stat") %>" style="line-height:2.6;padding:6.6px;"><%#Eval("Status")%>--%>
                             <strong>Status:</strong> <span class="spanlabel" style="background-color: #d9534f;">Open</span>
                         </div>
 
@@ -184,7 +185,7 @@
 
                     <hr class="ticketstatussidebar"/>
             <div class="ticket_status_sidebar">
-                      <strong>Attachment:</strong>
+                      <%--<strong>Attachment:</strong>--%>
                     <%-- <asp:ListBox ID="ListBox1" runat="server" AutoPostBack="True"
             onselectedindexchanged="ListBox1_SelectedIndexChanged" />--%>
                     <div class="table-responsive" style="border: 1px solid #5D7B9D;">

@@ -167,45 +167,6 @@ public partial class PostReply : System.Web.UI.Page
             
         }
         string file = "~/Files/" + fileName.ToString();
-        //if (file != string.Empty)
-        //{
-        //    WebClient req = new WebClient();
-        //    HttpResponse response = HttpContext.Current.Response;
-        //    string filePath = file;
-        //    response.Clear();
-        //    response.ClearContent();
-        //    response.ClearHeaders();
-        //    response.Buffer = true;
-        //    response.AddHeader("Content-Disposition", "attachment;filename=Filename.extension");
-        //    byte[] data = req.DownloadData(Server.MapPath(filePath));
-        //    response.BinaryWrite(data);
-        //    response.End();
-        //}
-        //if (file != string.Empty)
-        //{
-        //    if (file.EndsWith(".txt"))
-        //    {
-        //        Response.ContentType = "application/txt";
-        //    }
-        //    else if (file.EndsWith(".pdf"))
-        //    {
-        //        Response.ContentType = "application/pdf";
-        //    }
-        //    else if (file.EndsWith(".docx"))
-        //    {
-        //        Response.ContentType = "application/docx";
-        //    }
-        //    else
-        //    {
-        //        Response.ContentType = "image/jpg";
-        //    }
-
-        //    string filePath = file;
-
-        //    Response.AddHeader("Content-Disposition", "attachment;filename=Filename.extension");
-        //    Response.TransmitFile(Server.MapPath(filePath));
-        //    Response.End();
-        //}
         string strURL = file;
         WebClient req = new WebClient();
         HttpResponse response = HttpContext.Current.Response;
