@@ -138,7 +138,7 @@
                                           <td onclick="window.location.href = 'PostReply.aspx?pk=<%# Eval("pk") %>';"> 
                                           <span class="label <%#Eval("stat") %>" style="line-height:2.6;padding:6.6px;"><%#Eval("Status")%></td>
                                           <td onclick="window.location.href = 'PostReply.aspx?pk=<%# Eval("pk") %>';"><%#Eval("Subject")%></td>
-                                          <td onclick="window.location.href = 'PostReply.aspx?pk=<%# Eval("pk") %>';"></td>
+                                         <td onclick="window.location.href = 'PostReply.aspx?pk=<%# Eval("pk") %>';"><%#Eval("UserName")%></td>
                                           <td onclick="window.location.href = 'PostReply.aspx?pk=<%# Eval("pk") %>';"><%#Eval("CategoryId")%></td>
                                           <td onclick="window.location.href = 'PostReply.aspx?pk=<%# Eval("pk") %>';"></td>
                                           <td onclick="window.location.href = 'PostReply.aspx?pk=<%# Eval("pk") %>';">

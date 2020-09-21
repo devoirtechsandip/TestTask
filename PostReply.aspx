@@ -139,8 +139,6 @@
                                                 </div>
                                                 <div class="col-md-10 wpsp_hthread_info" style="padding-left: 0px;">
                                                     <strong><%#Eval("UserName")%></strong><br>
-
-
                                                     <small><%#Eval("DatePosted")%></small>
                                                 </div>
                                             </div>

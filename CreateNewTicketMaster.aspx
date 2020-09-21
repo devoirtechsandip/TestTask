@@ -149,13 +149,8 @@
                             </div>
                             <asp:Label ID="lblpk" runat="server" Text="pk" Visible="false"></asp:Label>
                             <asp:Label ID="lblmsg" runat="server"></asp:Label>
-
-                        
-
-                        
-                        </div>
-                    </div>
-                
+            </div>
+                    
         <!-- CK Editor -->
 <script src="bower_components/ckeditor/ckeditor.js" type="text/javascript"></script>
     <!-- Bootstrap WYSIHTML5 -->

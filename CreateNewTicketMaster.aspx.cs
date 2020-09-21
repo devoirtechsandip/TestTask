@@ -144,11 +144,13 @@ public partial class CreateNewTicketMaster : System.Web.UI.Page
         {
             HttpCookie aCookie = Request.Cookies["UserDetails"];
             string Role = null; //took variable to store role
+            string UserName = null; //took variable for every admin to store UserName
             if (aCookie != null)
             {
-                if (aCookie["Role"] == "User") Role = aCookie["Role"];
-                else if (aCookie["Role"] == "Admin") Role = aCookie["Role"];
+                Role = aCookie["Role"];
+                UserName = aCookie["Username"];
             }
+           
             SqlConnection cnn = new SqlConnection(ConfigurationManager.ConnectionStrings["ESSConnectionString"].ConnectionString);
             string query = "sp_InsertCreateNewTicket";         //Stored Procedure name   
             SqlCommand com = new SqlCommand(query, cnn);  //creating  SqlCommand  object  
@@ -164,11 +166,13 @@ public partial class CreateNewTicketMaster : System.Web.UI.Page
             com.Parameters.AddWithValue("@pk", System.DBNull.Value);
             com.Parameters.AddWithValue("@DeleteIt", "N");
             com.Parameters.AddWithValue("@Role", Role);
+            com.Parameters.AddWithValue("@UserName", UserName);
             cnn.Open();
             com.ExecuteNonQuery(); //executing the sqlcommand  
             cnn.Close(); 
         }
         catch (Exception ex) { }
+      
     }
 
     protected void InsertFile()
