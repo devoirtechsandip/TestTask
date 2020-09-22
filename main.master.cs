@@ -13,11 +13,11 @@ public partial class main : System.Web.UI.MasterPage
 
     protected void Page_Load(object sender, EventArgs e)
 	{
-        lipostreply1.Visible = false;
+        //lipostreply1.Visible = false;
         liticketlist.Visible = false;
         liticketlist1.Visible = false;
         linewtm.Visible = false;
-        Liprep.Visible = false;
+        //Liprep.Visible = false;
         linewtm.Visible = false;
 
 
@@ -30,13 +30,13 @@ public partial class main : System.Web.UI.MasterPage
                 if (aCookie["Role"] == "User")
 
                 {
-                    lipostreply1.Visible = true;
+                   // lipostreply1.Visible = true;
                     liticketlist.Visible = true;
                     linewtm.Visible = true;
                 }
                 else if (aCookie["Role"] == "Admin")
                 {
-                    Liprep.Visible = true;
+                   // Liprep.Visible = true;
                     liticketlist1.Visible = true;
                     linewtm.Visible = true;
                 }

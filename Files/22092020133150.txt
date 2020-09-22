@@ -1,0 +1,35 @@
+USE [Excellence]
+GO
+/****** Object:  StoredProcedure [dbo].[sp_Insert]    Script Date: 9/17/2020 5:40:13 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+ALTER PROCEDURE [dbo].[sp_Insert] 
+
+	@Subject nvarchar(100),
+	@Description nvarchar(100),
+	@CategoryId nvarchar(100),
+	@PriorityId nvarchar(100),
+	@TicketId int output,
+	@FileName nvarchar(100),
+	@ContentType nvarchar(200),
+	@Data varbinary(max),
+	@pk int output
+	
+
+AS
+BEGIN
+		SET NOCOUNT ON;
+		--to insert values in CreateNewTicket_Master
+		if not exists(select TicketId from Excellence.dbo.CreateNewTicket_Master)
+		INSERT INTO Excellence.dbo.CreateNewTicket_Master(Subject,Description,CategoryId,PriorityId,valid)VALUES(@Subject,@Description,@CategoryId,@PriorityId,'1')
+		SET @TicketId=@@IDENTITY
+		RETURN @TicketId
+
+		--to insert values in TicketFile_Master
+		if not exists(select pk from Excellence.dbo.TicketFile_Master)
+		INSERT INTO Excellence.dbo.TicketFile_Master(FileName,ContentType,Data,TicketId,valid)VALUES(@FileName,@ContentType,@Data,@TicketId,'1')
+		SET @pk=@@IDENTITY
+		RETURN @pk
+END

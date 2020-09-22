@@ -11,6 +11,13 @@
     <%--<link rel="stylesheet" href="..\plugins\bootstrap-wysihtml5\bootstrap3-wysihtml5.min.css" />--%>
     <link href="plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css" rel="stylesheet" />
     <link href="dist/css/licenselists.css" rel="Stylesheet" type="text/css" />
+    <style>
+        .status1,.status1:hover{
+            background-color: #fff;
+    color: #444;
+    border-color: #444;
+        }
+    </style>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="pagecontents" runat="Server">
 
@@ -48,26 +55,21 @@
 
                                <div id="search">         
          <asp:TextBox ID="txtSearchMaster" runat="server" Height="23px" Width="973px"></asp:TextBox>
-         <asp:Button ID="btnSearch" runat="server" Text="Search" OnClick="btnSearch_Click" CssClass="col-xs-offset-0" Width="53px" />
+         <asp:Button ID="btnSearch" runat="server" Text="Search" OnClick="btnSearch_Click" CssClass="col-xs-offset-0 status1" Width="53px" />
      </div>
                             </div>
                         </div>
                         <br /> 
-          </div>
-                    <div class="col-md-9">
-            <div class="row" style="display:inline-block">
-                <div class="col-md-5">
-                    <asp:Button ID="btnchangestatus" runat="server"  CssClass="btn btn-default btn-sm" Text="Change Status " OnClick="btnchangestatus_Click" />
+            <div class="row" style="display:inline-block">      
+                <div class="col-md-6">
+                    <asp:Button ID="btnchangestatus" runat="server"  CssClass="btn btn-default btn-sm status1" Text="Change Status " OnClick="btnchangestatus_Click" />
                     <asp:Label ID="lblHidden" runat="server" Text=""></asp:Label>
        
                 </div>
-                <div class="col-md-1">
-                    <asp:Button ID="btndelete" runat="server" OnClick="btndelete_Click" CssClass="btn btn-default btn-sm" Text="Delete" />
+                <div class="col-md-2">
+                    <asp:Button ID="btndelete" runat="server" OnClick="btndelete_Click" CssClass="btn btn-default btn-sm status1" Text="Delete" />
                 </div>
             </div>
-                      
-                       </div> 
-
                     <!-- Change status and priority modal popup -->
                    <asp:Button ID="btnvstatus" runat="server" style="display:none" ></asp:Button>
                 <cc1:ModalPopupExtender ID="mpechangestatus" BehaviorID="mpestatus" runat="server"
@@ -89,12 +91,13 @@
 
                 
         </div>
-                     <div class="footer">
-        <div class="col-md-offset-4 col-md-2 col-xs-12">
-        <asp:Button ID="btnupdate" runat="server" Text="Update" Onclick="btnupdate_Click" CssClass="btn btn-default"></asp:Button>
+                    <br /><br /><br /><br /><br />
+                     <div class="footer" style="margin-bottom:42px;">
+        <div class="col-md-offset-3 col-md-2 col-xs-12">
+        <asp:Button ID="btnupdate" runat="server" Text="Update" Onclick="btnupdate_Click" CssClass="btn btn-default status1"></asp:Button>
             </div>
-        <div class="col-md-2 col-xs-12">
-        <asp:Button ID="btncancel" runat="server" Text="Close" CssClass="btn btn-default"></asp:Button>
+        <div class="col-md-offset-1 col-md-2 col-xs-12">
+        <asp:Button ID="btncancel" runat="server" Text="Close" CssClass="btn btn-default status1"></asp:Button>
             </div>
     </div>
 </asp:Panel>
@@ -103,13 +106,7 @@
                             <asp:Label ID="lblpk" runat="server" Text="pk" Visible="false"></asp:Label>
                             <asp:Label ID="lblmsg" runat="server" ForeColor="Red"></asp:Label> 
                         
-                        <br />
-
-                        
-                        </div>
-                    </div>
-            </div>
-        <div class="row">
+                        <br /><br />
             <div class="table-responsive" style="border: 1px solid #5D7B9D;">
                             <asp:ListView ID="lstdc" runat="server" DataKeyNames="pk">
                                 <LayoutTemplate>
@@ -117,7 +114,7 @@
                                         <thead style="background: #5D7B9D; color: white;">
                                             <tr>
                                                 <th><asp:CheckBox ID="checkall" runat="server"></asp:CheckBox></th>
-                                                <th>Id</th>
+                                               <%-- <th>Id</th>--%>
                                                 <th>Status</th> 
                                                 <th>Subject</th> 
                                                 <th>Raised By</th>
@@ -134,7 +131,7 @@
                                 <ItemTemplate>
                                     <tr >
                                           <td><input id="chkpk" value='<%# Eval("pk") %>' type="checkbox" runat="server" /></td>
-                                          <td onclick="window.location.href = 'PostReply.aspx?pk=<%# Eval("pk") %>';"><%#Eval("pk")%></td>
+                                          <%--<td onclick="window.location.href = 'PostReply.aspx?pk=<%# Eval("pk") %>';"><%#Eval("pk")%></td>--%>
                                           <td onclick="window.location.href = 'PostReply.aspx?pk=<%# Eval("pk") %>';"> 
                                           <span class="label <%#Eval("stat") %>" style="line-height:2.6;padding:6.6px;"><%#Eval("Status")%></td>
                                           <td onclick="window.location.href = 'PostReply.aspx?pk=<%# Eval("pk") %>';"><%#Eval("Subject")%></td>
@@ -170,7 +167,6 @@
                                 </EmptyDataTemplate>
                             </asp:ListView>
                         </div>
-        </div>
          <div class="row">
                           
                           <div class="col-md-4 col-md-offset-4" style="text-align: center;">
@@ -181,7 +177,10 @@
                           
         </div>
                  
-                
+                </div>
+                    </div>
+                </div>
+            </div>
 <%--<div id="divPopUp" class="pnlBackGround">
      <div class="row">
                              <div class="col-md-12">

@@ -47,6 +47,11 @@
             margin-bottom: 20px;
             border-radius: 5px;
         }
+        .status1,.status1:hover{
+            background-color: #fff;
+    color: #444;
+    border-color: #444;
+        }
     </style>
     <script type="text/javascript">
         $('document').ready(function () {
@@ -72,15 +77,14 @@
                 <div class="col-md-9">
             <div class="row" style="display:inline-block">
                 <div class="col-md-5">
-                    <asp:Button ID="btnBackToTicket" runat="server" PostBackUrl="~/TicketListMaster.aspx" CssClass="btn btn-default btn-sm" Text="Back to tickets " />
+                    <asp:Button ID="btnBackToTicket" runat="server" PostBackUrl="~/TicketListMaster.aspx" CssClass="btn btn-default btn-sm status1" Text="Back to tickets " />
                 </div>
                 <div class="col-md-1">
-                    <asp:Button ID="btnCloseTicket" runat="server" OnClick="btnCloseTicket_Click" CssClass="btn btn-default btn-sm" Text="Close Ticket" />
+                    <asp:Button ID="btnCloseTicket" runat="server" OnClick="btnCloseTicket_Click" CssClass="btn btn-default btn-sm status1" Text="Close Ticket" />
                 </div>
-            </div>
-
+            </div> 
                     <h4>
-                     [Ticket #8] Ticket Section<asp:Label runat="server" Text="" ID="lblTicketId" Font-Bold="true"></asp:Label>
+                     Ticket #<asp:Label runat="server" Text="" ID="lblTicketId" Font-Bold="true"></asp:Label>
                     </h4>
                     
                 <hr />

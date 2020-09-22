@@ -64,7 +64,7 @@
                                     <table class="table no-margin table-bordered table-hover">
                                         <thead style="background: #5D7B9D; color: white;">
                                             <tr>
-                                                <th>Id</th>
+                                               <%-- <th>Id</th>--%>
                                                 <th>Status</th>
                                                 <th>Subject</th> 
                                                 <th>Category</th>
@@ -78,15 +78,24 @@
                                     </table>
                                 </LayoutTemplate>
                                 <ItemTemplate>
-                                    <tr onclick="window.location.href = 'PostReply.aspx?pk=<%# Eval("pk") %>';">
-                                        
+                                    <tr >
+                                          <%--<td onclick="window.location.href = 'PostReply1.aspx?pk=<%# Eval("pk") %>';"><%#Eval("pk")%></td>--%>
+                                          <td onclick="window.location.href = 'PostReply1.aspx?pk=<%# Eval("pk") %>';"> 
+                                          <span class="label <%#Eval("stat") %>" style="line-height:2.6;padding:6.6px;"><%#Eval("Status")%></td>
+                                          <td onclick="window.location.href = 'PostReply1.aspx?pk=<%# Eval("pk") %>';"><%#Eval("Subject")%></td>
+                                          <td onclick="window.location.href = 'PostReply1.aspx?pk=<%# Eval("pk") %>';"><%#Eval("CategoryId")%></td>
+                                          <td onclick="window.location.href = 'PostReply1.aspx?pk=<%# Eval("pk") %>';">
+                                           <span class="label <%#Eval("prior") %>" style="line-height:2.6;padding:6.6px;"><%#Eval("PriorityId")%></td>
+                                          <td onclick="window.location.href = 'PostReply1.aspx?pk=<%# Eval("pk") %>';"><%#Eval("DateUpdated")%>  </td>
+                                       </tr>
+                                   <%-- <tr onclick="window.location.href = 'PostReply.aspx?pk=<%# Eval("pk") %>';">
                                         <td><%#Eval("pk")%>
-                                          <td> <asp:Label ID="btopen" runat="server" class="wpsp_admin_label" style="background-color:#d9534f;" Text="Open" /><%#Eval("Status")%></td>
+                                          <span class="label <%#Eval("stat") %>" style="line-height:2.6;padding:6.6px;"><%#Eval("Status")%></td>
                                           <td><%#Eval("Subject")%>
                                             <td><%#Eval("CategoryId")%>
-                                            <td><%#Eval("PriorityId")%>
+                                            <span class="label <%#Eval("prior") %>" style="line-height:2.6;padding:6.6px;"><%#Eval("PriorityId")%></td>
                                             <td><%#Eval("DateUpdated")%>  
-                                       </tr>
+                                   --%>    
                                 </ItemTemplate>
                                 <EmptyDataTemplate> 
                                     <table class="table no-margin table-bordered table-hover">

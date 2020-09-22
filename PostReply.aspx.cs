@@ -134,7 +134,7 @@ public partial class PostReply : System.Web.UI.Page
             var query = string.Empty;
             var rply = (string.IsNullOrEmpty(txtReply.Text.Trim())) ? string.Empty : txtReply.Text.Trim();
             var bcc = (string.IsNullOrEmpty(txtBCC.Text.Trim())) ? string.Empty : txtBCC.Text.Trim();
-            query = "insert into [PostReply_Master](Username,ReplyMessage,BCC,DatePosted,TicketId)" + "values('" + "Deepak Sahani" + "','" + rply + "','" + bcc + "','" + DateTime.Now + "','" + Convert.ToInt32(lblTicketId.Text) + "')";
+            query = "insert into [PostReply_Master](UserName,ReplyMessage,BCC,DatePosted,TicketId)" + "values('" + " " + "','" + rply + "','" + bcc + "','" + DateTime.Now + "','" + Convert.ToInt32(lblTicketId.Text) + "')";
             using (SqlCommand cmd = new SqlCommand(query, cnn))
             {
                 int result = cmd.ExecuteNonQuery();

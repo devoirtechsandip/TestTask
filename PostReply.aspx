@@ -47,6 +47,11 @@
             margin-bottom: 20px;
             border-radius: 5px;
         }
+        .status1,.status1:hover{
+            background-color: #fff;
+    color: #444;
+    border-color: #444;
+        }
     </style>
     <script type="text/javascript">
         $('document').ready(function () {
@@ -72,10 +77,10 @@
                 <div class="col-md-9">
             <div class="row" style="display:inline-block">
                 <div class="col-md-5">
-                    <asp:Button ID="btnBackToTicket" runat="server" PostBackUrl="~/TicketListMaster1.aspx" CssClass="btn btn-default btn-sm" Text="Back to tickets " />
+                    <asp:Button ID="btnBackToTicket" runat="server" PostBackUrl="~/TicketListMaster1.aspx" CssClass="btn btn-default btn-sm status1" Text="Back to tickets " />
                 </div>
                 <div class="col-md-1">
-                    <asp:Button ID="btnCloseTicket" runat="server" OnClick="btnCloseTicket_Click" CssClass="btn btn-default btn-sm" Text="Close Ticket" />
+                    <asp:Button ID="btnCloseTicket" runat="server" OnClick="btnCloseTicket_Click" CssClass="btn btn-default btn-sm status1" Text="Close Ticket" />
                 </div>
             </div>
 
@@ -149,7 +154,7 @@
                                     <div class="panel-body col-md-12 wpsp_ticket_thread_content">
 
                                         <div class="col-md-12 wpsp_ticket_thread_body" style="padding: 0px;">
-                                            <p><%#Eval("ReplyMessage")%></p>
+                                            <%#Eval("ReplyMessage")%>
                                         </div>
                                     </div>
                                 </div>
