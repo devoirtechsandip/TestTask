@@ -85,7 +85,7 @@
             </div>
 
                     <h4>
-                     Ticket #<asp:Label runat="server" Text="" ID="lblTicketId" Font-Bold="true"></asp:Label>
+                     Ticket #<asp:Label runat="server" Text="" ID="lblTicketId" Font-Bold="true"></asp:Label>&nbsp;&nbsp;<asp:Label runat="server" Text="" ID="lblSubject" Font-Bold="true"></asp:Label>
                     </h4>
                     
                 <hr />
@@ -169,17 +169,17 @@
                     <div class="sidebar-module" id="tic_status_sidebar">
                         <h4>Ticket Status	</h4>
                         <hr class="ticketstatussidebar" />
-                        <div class="ticket_status_sidebar">
-                           <%--  <span class="label <%#Eval("stat") %>" style="line-height:2.6;padding:6.6px;"><%#Eval("Status")%>--%>
-                            <strong>Status:</strong> <span class="spanlabel" style="background-color: #d9534f;">Open</span>
+                         <div class="ticket_status_sidebar">
+                            <strong>Status:</strong> 
+                            <asp:Label runat="server" ID="lblstatus" Text="" style="line-height:2.6;padding:6.6px;"></asp:Label>
                         </div>
 
                         <div class="ticket_status_sidebar">
-                            <strong>Category:</strong> Android Application   
+                            <strong>Category:</strong><asp:Label runat="server" ID="lblcategory" Text=""></asp:Label> 
                         </div>
 
                         <div class="ticket_status_sidebar">
-                            <strong>Priority:</strong> <span class="spanlabel" style="background-color: #5cb85c;">Normal</span>
+                            <strong>Priority:</strong> <asp:Label runat="server" ID="lblpriority" Text="" style="line-height:2.6;padding:6.6px;"></asp:Label>
                         </div>
                     </div>
             <%--Ticket Field Sidebar--%>

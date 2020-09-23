@@ -29,8 +29,50 @@ public partial class PostReply : System.Web.UI.Page
 
         loadAttachment();
         loadReply();
+        loadTicketStatus(); 
+    }
 
-    } 
+    private void loadTicketStatus()
+    {
+        try
+        {
+            using (SqlConnection cnn = new SqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings["ESSConnectionString"].ConnectionString))
+            {
+
+                if (cnn.State == ConnectionState.Open)
+                    cnn.Close();
+
+                cnn.Open();
+                using (SqlCommand cmd = new SqlCommand())
+                {
+
+                    cmd.CommandText = "SELECT * from [CreateNewTicket_Master] where pk=" + Convert.ToInt32(lblTicketId.Text);
+                    cmd.Connection = cnn;
+                    using (SqlDataAdapter da = new SqlDataAdapter(cmd))
+                    {
+                        DataSet ds = new DataSet();
+                        da.Fill(ds);
+                        lblstatus.Text = ds.Tables[0].Rows[0]["Status"].ToString();
+                        if (ds.Tables[0].Rows[0]["Status"].ToString() == "Open") lblstatus.BackColor = System.Drawing.Color.Red;
+                        if (ds.Tables[0].Rows[0]["Status"].ToString() == "Pending") lblstatus.BackColor = System.Drawing.Color.Yellow;
+                        if (ds.Tables[0].Rows[0]["Status"].ToString() == "Close") lblstatus.BackColor = System.Drawing.Color.Green;
+                        lblcategory.Text = ds.Tables[0].Rows[0]["CategoryId"].ToString();
+                        lblpriority.Text = ds.Tables[0].Rows[0]["PriorityId"].ToString();
+                        if (ds.Tables[0].Rows[0]["PriorityId"].ToString() == "High") lblpriority.BackColor = System.Drawing.Color.Red;
+                        if (ds.Tables[0].Rows[0]["PriorityId"].ToString() == "Medium") lblpriority.BackColor = System.Drawing.Color.Yellow;
+                        if (ds.Tables[0].Rows[0]["PriorityId"].ToString() == "Low") lblpriority.BackColor = System.Drawing.Color.Green;
+                        cnn.Close();
+                    }
+
+                }
+            }
+        }
+        catch (Exception ex)
+        {
+
+        }
+    }
+
 
     private void loadAttachment()
     {
@@ -81,7 +123,9 @@ public partial class PostReply : System.Web.UI.Page
                 using (SqlCommand cmd = new SqlCommand())
                 {
 
-                    cmd.CommandText = "SELECT [pk],[Username],[ReplyMessage],[BCC],[DatePosted],[TicketId] FROM [PostReply_Master] where TicketId=" + Convert.ToInt32(lblTicketId.Text);
+                    //  cmd.CommandText = "SELECT [pk],[Username],[ReplyMessage],[BCC],[DatePosted],[TicketId] FROM [PostReply_Master] where TicketId=" + Convert.ToInt32(lblTicketId.Text);
+                    cmd.CommandText = "SELECT a.[pk],b.[Username],b.[Subject],a.[ReplyMessage],a.[BCC],a.[DatePosted],a.[TicketId] " +
+                        "FROM [PostReply_Master] a join CreateNewTicket_Master b on a.TicketId = b.pk where a.TicketId=" + Convert.ToInt32(lblTicketId.Text);
                     cmd.Connection = cnn;
                     using (SqlDataAdapter da = new SqlDataAdapter(cmd))
                     {
@@ -89,6 +133,7 @@ public partial class PostReply : System.Web.UI.Page
                         da.Fill(ds);
                         lstReply.DataSource = ds;
                         lstReply.DataBind();
+                        lblSubject.Text = ds.Tables[0].Rows[0]["Subject"].ToString();
 
                         cnn.Close();
                     }
@@ -134,7 +179,8 @@ public partial class PostReply : System.Web.UI.Page
             var query = string.Empty;
             var rply = (string.IsNullOrEmpty(txtReply.Text.Trim())) ? string.Empty : txtReply.Text.Trim();
             var bcc = (string.IsNullOrEmpty(txtBCC.Text.Trim())) ? string.Empty : txtBCC.Text.Trim();
-            query = "insert into [PostReply_Master](UserName,ReplyMessage,BCC,DatePosted,TicketId)" + "values('" + " " + "','" + rply + "','" + bcc + "','" + DateTime.Now + "','" + Convert.ToInt32(lblTicketId.Text) + "')";
+            query = "insert into [PostReply_Master](ReplyMessage,BCC,DatePosted,TicketId)" + "values('" + rply + "','" + bcc + "','" + DateTime.Now + "','" + Convert.ToInt32(lblTicketId.Text) + "')";
+           // query = "insert into [PostReply_Master](UserName,ReplyMessage,BCC,DatePosted,TicketId)" + "values('" + " " + "','" + rply + "','" + bcc + "','" + DateTime.Now + "','" + Convert.ToInt32(lblTicketId.Text) + "')";
             using (SqlCommand cmd = new SqlCommand(query, cnn))
             {
                 int result = cmd.ExecuteNonQuery();

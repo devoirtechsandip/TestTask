@@ -124,8 +124,10 @@ public partial class CreateNewTicketMaster : System.Web.UI.Page
             }
             else
             {
+                ViewState["TicketId"] = null;
                 InsertTicket();
                 InsertFile();
+                InsertPostReply();
                 HttpCookie aCookie = Request.Cookies["UserDetails"];
                 //redirected page according to role
                 if (aCookie != null)
@@ -156,9 +158,8 @@ public partial class CreateNewTicketMaster : System.Web.UI.Page
             SqlCommand com = new SqlCommand(query, cnn);  //creating  SqlCommand  object  
             com.CommandType = CommandType.StoredProcedure;  //here we declaring command type as stored Procedure  
 
-            //adding paramerters to  SqlCommand below 
-            com.Parameters.AddWithValue("@Subject", txtsubject.Text.ToString());
-            com.Parameters.AddWithValue("@Description ", txtTextArea.Value.ToString());
+            //adding paramerters to  SqlCommand below  
+            com.Parameters.AddWithValue("@Subject ", txtsubject.Text.ToString());
             com.Parameters.AddWithValue("@PriorityId ", ddlPriority.SelectedItem.ToString());
             com.Parameters.AddWithValue("@CategoryId ", ddlCategory.SelectedItem.ToString());
             com.Parameters.AddWithValue("@Status", "Open");
@@ -169,6 +170,12 @@ public partial class CreateNewTicketMaster : System.Web.UI.Page
             com.Parameters.AddWithValue("@UserName", UserName);
             cnn.Open();
             com.ExecuteNonQuery(); //executing the sqlcommand  
+            string query2 = "Select @@Identity as insertedID from CreateNewTicket_Master";
+            com.CommandText = query2;
+            com.CommandType = CommandType.Text;
+            com.Connection = cnn; 
+            int insertedID = Convert.ToInt32(com.ExecuteScalar());
+            ViewState.Add("TicketId", insertedID);
             cnn.Close(); 
         }
         catch (Exception ex) { }
@@ -198,7 +205,7 @@ public partial class CreateNewTicketMaster : System.Web.UI.Page
 
                     //adding paramerters to  SqlCommand below 
                     com.Parameters.AddWithValue("@FileName", filename);
-                    com.Parameters.AddWithValue("@TicketId ", getTicketId());
+                    com.Parameters.AddWithValue("@TicketId ", Convert.ToInt32(ViewState["TicketId"]));
                     com.Parameters.AddWithValue("@pk", System.DBNull.Value);
                     cnn.Open();
                     com.ExecuteNonQuery();                     //executing the sqlcommand  
@@ -208,20 +215,37 @@ public partial class CreateNewTicketMaster : System.Web.UI.Page
         }
     }
 
-    protected int getTicketId()
+    private void InsertPostReply()
     {
-        int TicketId = 0;
-        using (SqlConnection cnn = new SqlConnection(ConfigurationManager.ConnectionStrings["ESSConnectionString"].ConnectionString))
+        try
         {
-            string query = "SELECT pk from CreateNewTicket_Master where Subject=('" + txtsubject.Text.ToString() + "')";
-            SqlCommand cmd = new SqlCommand(query, cnn);
-            SqlDataAdapter sda = new SqlDataAdapter(cmd);
-            DataTable dt = new DataTable();
-            sda.Fill(dt);
-            foreach (DataRow dr in dt.Rows) TicketId = Convert.ToInt32(dr.ItemArray[0]);
+            HttpCookie aCookie = Request.Cookies["UserDetails"];
+            string Role = null; //took variable to store role
+            string UserName = null; //took variable for every admin to store UserName
+            if (aCookie != null)
+            {
+                Role = aCookie["Role"];
+                UserName = aCookie["Username"];
+            }
+
+            SqlConnection cnn = new SqlConnection(ConfigurationManager.ConnectionStrings["ESSConnectionString"].ConnectionString);
+            string query = "sp_InsertPostReply";         //Stored Procedure name   
+            SqlCommand com = new SqlCommand(query, cnn);  //creating  SqlCommand  object  
+            com.CommandType = CommandType.StoredProcedure;  //here we declaring command type as stored Procedure  
+
+            //adding paramerters to  SqlCommand below 
+            com.Parameters.AddWithValue("@pk", System.DBNull.Value);
+            com.Parameters.AddWithValue("@ReplyMessage ", txtTextArea.Value.ToString());
+            com.Parameters.AddWithValue("@BCC ", System.DBNull.Value);
+            com.Parameters.AddWithValue("@DatePosted ", DateTime.Now);
+            com.Parameters.AddWithValue("@TicketId ", Convert.ToInt32(ViewState["TicketId"]));
+            cnn.Open();
+            com.ExecuteNonQuery();                     //executing the sqlcommand  
+            cnn.Close();
         }
-        return TicketId;
-    }
+        catch (Exception ex) { }
+
+    } 
     protected void btnRefresh_Click(object sender, EventArgs e)
     {
         FillCapctha();

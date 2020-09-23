@@ -9,7 +9,31 @@
     <!-- bootstrap wysihtml5 - text editor -->
     <%--<link rel="stylesheet" href="..\plugins\bootstrap-wysihtml5\bootstrap3-wysihtml5.min.css" />--%>
     <link href="plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css" rel="stylesheet" />
+    <style type="text/css">
+        fieldset{
+            display: block;
+    margin-left: 2px;
+    margin-right: 2px;
+    padding-top: 0.35em;
+    padding-bottom: 0.625em;
+    padding-left: 0.75em;
+    padding-right: 0.75em;
+    border: 1px solid #ccc;
+        }
+        legend{
+            display: block;
+    width: auto;
+    padding: 0px;
+    margin-bottom: 0px;
+    font-size: 15px;
+    font-weight: bold;
+    line-height: inherit;
+    color: #333;
+    border: 0;
+    /*border-bottom: 1px solid #ccc;*/
 
+        }
+    </style>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="pagecontents" runat="Server">
 
@@ -55,7 +79,7 @@
                         <br /> 
                         <div class="row">
                             <div class="col-md-12">
-                                <asp:Label ID="Label7" runat="server" Text="Description"></asp:Label><asp:Label runat="server" ID="Label10" Text=" *" ForeColor="Red" Font-Bold="true"></asp:Label>
+                                <asp:Label ID="lbldescription" runat="server" Text="Description"></asp:Label><asp:Label runat="server" ID="Label10" Text=" *" ForeColor="Red" Font-Bold="true"></asp:Label>
                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator3" Display="Static" ForeColor="Red" runat="server" ControlToValidate="txtTextArea" ErrorMessage="Please select a Description."></asp:RequiredFieldValidator>
                 <%--<asp:TextBox class="textarea" placeholder="Place some text here" ValidationGroup="vg" runat="server" cols="10" rows="4" ID="txtTextArea"
                           style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></asp:TextBox>--%>
@@ -84,11 +108,16 @@
                          <div class="row">
                              <div class="col-md-12">
                                  <asp:Label ID="Label8" runat="server" Text="Attachment" />
-                                 <asp:FileUpload ID="FileUpload1"  runat="server" AllowMultiple="true"></asp:FileUpload>
+                                 <fieldset>
+                                     <legend>Attach Files (+)</legend>
+                                     <asp:FileUpload ID="FileUpload1"  runat="server" AllowMultiple="true"></asp:FileUpload>
+                                 </fieldset>
+                                 
                                   </div>
                             </div>
                         <br /> 
-                          <div class="col-12">
+                        <div class="row">
+                          <div class="col-md-3">
                                <%-- <asp:CheckBox ID="CheckBox1" runat="server"></asp:CheckBox>
                                 <asp:Label ID="Label6" runat="server" Text="I'm not a robot"></asp:Label>--%>
                               
@@ -97,19 +126,17 @@
                         <ContentTemplate>
 
                             <table>
-
                                 <tr>
+                                    <td style="height: 50px; width: 200px;">
 
-                                    <td style="height: 50px; width: 100px;">
-
-                                        <asp:Image ID="imgCaptcha" runat="server" />
+                                        <asp:Image ID="imgCaptcha" runat="server" style="width: 180px;height: 34px;margin-bottom: 16px;" />
                                        
                                     </td>
                                     
                                     <td valign="middle">
 
-                                        <asp:Button ID="btnRefresh" runat="server" CausesValidation="false" Text="Refresh" style="margin-left:10px;" OnClick="btnRefresh_Click" />
-
+                                        <%--<asp:Button ID="btnRefresh" runat="server" CausesValidation="false" Text="Refresh" style="margin-left:10px;" OnClick="btnRefresh_Click" />--%>
+                                        <asp:LinkButton ID="btnRefresh" runat="server" CssClass="btn btn-primary"  CausesValidation="false" style="padding: 0px;min-width: 40px;min-height: 34px;margin-bottom:16px" ToolTip="Refresh" OnClick="btnRefresh_Click"><i class="fas fa-redo-alt" style="padding-top:10px;"></i></asp:LinkButton>
                                     </td>
 
                                 </tr>
@@ -119,26 +146,16 @@
                         </ContentTemplate>
 
                     </asp:UpdatePanel>
-                              <table><tr>
-                                 <td>
-
-                    Enter above captcha code :
-
-                </td>
-</tr>
-                                  <tr>
-                <td>
-
-                    <asp:TextBox ID="txtCaptcha" runat="server" autocomplete="off" Width="200px"></asp:TextBox>
+                              </div>
+                            <div class="col-md-9 col-xs-12">
+                    <asp:TextBox ID="txtCaptcha" runat="server" autocomplete="off" CssClass="form-control" placeholder="Enter Captcha Code"></asp:TextBox>
                     <br />
                     <span style="color: Red; font-weight: bold"> 
                         <asp:Label ID="lblErrorMsg" runat="server"></asp:Label></span>
 
-                </td> 
-                            </tr>         
-                </table>               
+                      
         </div>
-   
+   </div>
                           <div class="row">
                             <div class="col-md-2">
                                 <asp:Button ID="submit" runat="server" Text="Submit" class="btn btn-success btnsubmit margin form-control" ValidationGroup="vg" CausesValidation="false" OnClick="submit_Click" />
