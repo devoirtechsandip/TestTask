@@ -106,7 +106,7 @@
 
                             </div>
                             <div class="col-md-12 form-group">
-                                <asp:TextBox ID="txtBCC" runat="server" class="form-control" type="text" name="bcc" value="" placeholder="BCC (Comma separated list)" />
+                                <asp:TextBox ID="txtBCC" runat="server"  autocomplete="off" class="form-control" type="text" name="bcc" value="" placeholder="BCC (Comma separated list)" />
                             </div>
                             <div class="col-md-3 col-md-offset-6 form-group">
                                 <asp:Button runat="server" OnClick="btnSubmitReply_Click" class="form-control btn btn-success" ID="btnSubmitReply" Text="Submit Reply"></asp:Button>
@@ -171,16 +171,16 @@
                         <h4>Ticket Status	</h4>
                         <hr class="ticketstatussidebar" />
                         <div class="ticket_status_sidebar">
-                            <strong>Status:</strong> 
-                            <asp:Label runat="server" ID="lblstatus" Text="" style="line-height:2.6;padding:6.6px;"></asp:Label>
+                            <strong>Status: </strong> 
+                            <span class="label <%#Eval("stat") %>" style="line-height:2.6;padding:6.6px;"><asp:Label runat="server" ID="lblstatus" Text="" style="font-size:10px;border-radius:0.75rem;padding:6.6px; line-height:2.6"></asp:Label></span>
                         </div>
 
                         <div class="ticket_status_sidebar">
-                            <strong>Category:</strong><asp:Label runat="server" ID="lblcategory" Text=""></asp:Label> 
+                            <strong>Category: </strong><asp:Label runat="server" ID="lblcategory" Text=""></asp:Label> 
                         </div>
 
                         <div class="ticket_status_sidebar">
-                            <strong>Priority:</strong> <asp:Label runat="server" ID="lblpriority" Text="" style="line-height:2.6;padding:6.6px;"></asp:Label>
+                            <strong>Priority: </strong><span class="label <%#Eval("prior") %>" style="line-height:2.6;padding:6.6px;"> <asp:Label runat="server" ID="lblpriority" Text="" style="font-size:10px;border-radius:0.75rem;padding:6.6px; line-height:2.6"></asp:Label></span>
                         </div>
                     </div>
             <%--Ticket Field Sidebar--%>

@@ -73,10 +73,10 @@ public partial class TicketListMaster : System.Web.UI.Page
                 cnn.Open();
                 using (SqlCommand cmd = new SqlCommand())
                 {
-                    cmd.CommandText = "SELECT a.pk,a.Subject,b.ReplyMessage,a.CategoryId,a.PriorityId,a.Status,a.DateUpdated,a.UserName," +
-                        " case when a.Status = 'Open' then 'bg-red' else case when a.Status = 'Pending' then 'bg-yellow' else 'bg-green' end end [stat]" +
-                        " , case when a.PriorityId = 'High' then 'bg-red' else case when a.PriorityId = 'Medium' then 'bg-yellow' else 'bg-green' end end [prior]" +
-                        " from [CreateNewTicket_Master] a join PostReply_Master b on a.pk = b.TicketId where a.Valid=1 and a.DeleteIt = 'N' and a.Role='User'";
+                    cmd.CommandText = "SELECT *," +
+                        " case when Status = 'Open' then 'bg-red' else case when Status = 'Pending' then 'bg-yellow' else 'bg-green' end end [stat]" +
+                        " , case when PriorityId = 'High' then 'bg-red' else case when PriorityId = 'Medium' then 'bg-yellow' else 'bg-green' end end [prior]" +
+                        " from [CreateNewTicket_Master] where Valid=1 and DeleteIt = 'N' and Role='User'";
                    // cmd.CommandText = "SELECT * FROM [CreateNewTicket_Master] where Valid=1 and DeleteIt = 'N' and Role='User'"; 
                     cmd.Connection = cnn;
                     using (SqlDataAdapter da = new SqlDataAdapter(cmd))

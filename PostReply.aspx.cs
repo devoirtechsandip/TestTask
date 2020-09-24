@@ -29,7 +29,43 @@ public partial class PostReply : System.Web.UI.Page
 
         loadAttachment();
         loadReply();
-        loadTicketStatus(); 
+        loadTicketStatus();
+        loadUserDetails();
+    }
+
+    private void loadUserDetails()
+    {
+        try
+        {
+            using (SqlConnection cnn = new SqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings["ESSConnectionString"].ConnectionString))
+            {
+
+                if (cnn.State == ConnectionState.Open)
+                    cnn.Close();
+
+                cnn.Open();
+                using (SqlCommand cmd = new SqlCommand())
+                {
+
+                    cmd.CommandText = "select a.UserName,b.UserEmail from CreateNewTicket_Master a join UserLogin b on a.UserName=b.loginid where pk=" + Convert.ToInt32(lblTicketId.Text);
+                    cmd.Connection = cnn;
+                    using (SqlDataAdapter da = new SqlDataAdapter(cmd))
+                    {
+                        DataSet ds = new DataSet();
+                        da.Fill(ds);
+                        lblname.Text = ds.Tables[0].Rows[0]["UserName"].ToString();
+                        lblemail.Text = ds.Tables[0].Rows[0]["UserEmail"].ToString();
+
+                        cnn.Close();
+                    }
+
+                }
+            }
+        }
+        catch (Exception ex)
+        {
+
+        }
     }
 
     private void loadTicketStatus()
@@ -46,7 +82,7 @@ public partial class PostReply : System.Web.UI.Page
                 using (SqlCommand cmd = new SqlCommand())
                 {
 
-                    cmd.CommandText = "SELECT * from [CreateNewTicket_Master] where pk=" + Convert.ToInt32(lblTicketId.Text);
+                    cmd.CommandText = "SELECT *,case when Status = 'Open' then 'bg-red' else case when Status = 'Pending' then 'bg-yellow' else 'bg-green' end end [stat],case when PriorityId = 'High' then 'bg-red' else case when PriorityId = 'Medium' then 'bg-yellow' else 'bg-green' end end [prior] from [CreateNewTicket_Master] where pk=" + Convert.ToInt32(lblTicketId.Text);
                     cmd.Connection = cnn;
                     using (SqlDataAdapter da = new SqlDataAdapter(cmd))
                     {
@@ -124,7 +160,7 @@ public partial class PostReply : System.Web.UI.Page
                 {
 
                     //  cmd.CommandText = "SELECT [pk],[Username],[ReplyMessage],[BCC],[DatePosted],[TicketId] FROM [PostReply_Master] where TicketId=" + Convert.ToInt32(lblTicketId.Text);
-                    cmd.CommandText = "SELECT a.[pk],b.[Username],b.[Subject],a.[ReplyMessage],a.[BCC],a.[DatePosted],a.[TicketId] " +
+                    cmd.CommandText = "SELECT a.[pk],a.[PostedUser],b.[Subject],a.[ReplyMessage],a.[BCC],a.[DatePosted],a.[TicketId] " +
                         "FROM [PostReply_Master] a join CreateNewTicket_Master b on a.TicketId = b.pk where a.TicketId=" + Convert.ToInt32(lblTicketId.Text);
                     cmd.Connection = cnn;
                     using (SqlDataAdapter da = new SqlDataAdapter(cmd))
@@ -172,24 +208,36 @@ public partial class PostReply : System.Web.UI.Page
     }
     public void InsertRole()
     {
+        HttpCookie aCookie = Request.Cookies["UserDetails"];
+        string Role = null; //took variable to store role
+        string UserName = null; //took variable for every admin to store UserName
+        string PostedUser = null;
+        if (aCookie != null)
+        {
+            Role = aCookie["Role"];
+            UserName = aCookie["Username"];
+            PostedUser = aCookie["Username"];
+        }
         try
         {
             SqlConnection cnn = new SqlConnection(ConfigurationManager.ConnectionStrings["ESSConnectionString"].ConnectionString);
             cnn.Open();
             var query = string.Empty;
+            var name = (string.IsNullOrEmpty(lblname.Text.Trim())) ? string.Empty : lblname.Text.Trim(); 
             var rply = (string.IsNullOrEmpty(txtReply.Text.Trim())) ? string.Empty : txtReply.Text.Trim();
             var bcc = (string.IsNullOrEmpty(txtBCC.Text.Trim())) ? string.Empty : txtBCC.Text.Trim();
-            query = "insert into [PostReply_Master](ReplyMessage,BCC,DatePosted,TicketId)" + "values('" + rply + "','" + bcc + "','" + DateTime.Now + "','" + Convert.ToInt32(lblTicketId.Text) + "')";
-           // query = "insert into [PostReply_Master](UserName,ReplyMessage,BCC,DatePosted,TicketId)" + "values('" + " " + "','" + rply + "','" + bcc + "','" + DateTime.Now + "','" + Convert.ToInt32(lblTicketId.Text) + "')";
+            query = "insert into [PostReply_Master](ReplyMessage,BCC,PostedUser,DatePosted,TicketId)" + "values('" + rply + "','" + bcc + "','" + UserName + "','" + DateTime.Now + "','" + Convert.ToInt32(lblTicketId.Text) + "')";
+            
             using (SqlCommand cmd = new SqlCommand(query, cnn))
             {
                 int result = cmd.ExecuteNonQuery();
             }
-
-            cnn.Close();
-            clear();
-            loadReply();
-        }
+          
+                cnn.Close();
+                clear();
+                loadReply();
+            }
+        
         catch (Exception ex)
         {
 

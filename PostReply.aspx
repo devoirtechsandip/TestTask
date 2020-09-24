@@ -85,7 +85,7 @@
             </div>
 
                     <h4>
-                     Ticket #<asp:Label runat="server" Text="" ID="lblTicketId" Font-Bold="true"></asp:Label>&nbsp;&nbsp;<asp:Label runat="server" Text="" ID="lblSubject" Font-Bold="true"></asp:Label>
+                     Ticket #<asp:Label runat="server" Text="" ID="lblTicketId" ></asp:Label>&nbsp;&nbsp;<asp:Label runat="server" Text="" ID="lblSubject" Font-Bold="true"></asp:Label>
                     </h4>
                     
                 <hr />
@@ -107,7 +107,7 @@
 
                             </div>
                             <div class="col-md-12 form-group">
-                                <asp:TextBox ID="txtBCC" runat="server" class="form-control" type="text" name="bcc" value="" placeholder="BCC (Comma separated list)" />
+                                <asp:TextBox ID="txtBCC" runat="server" autocomplete="off" class="form-control" type="text" name="bcc" value="" placeholder="BCC (Comma separated list)" />
                             </div>
                             <div class="col-md-3 col-md-offset-6 form-group">
                                 <asp:Button runat="server" OnClick="btnSubmitReply_Click" class="form-control btn btn-success" ID="btnSubmitReply" Text="Submit Reply"></asp:Button>
@@ -125,16 +125,6 @@
                     <div class="table-responsive" style="border: 1px solid #5D7B9D;">
                         <asp:ListView ID="lstReply" runat="server">
                             <ItemTemplate>
-                                <%-- <table>
-                                        <tr> 
-                                            <th><%#Eval("UserName")%> <br><%#Eval("DatePosted")%></th>
-                                        </tr>
-                                       <hr style="width:50%;text-align:left;margin-left:0">
-                                        <tr>
-                                        <td><%#Eval("ReplyMessage")%></td>
-                                    </tr>
-                                       <hr style="width:50%;text-align:left;margin-left:0">
-                                    </table>--%>
                                 <div class="panel panel-primary col-md-12 wpsp_ticket_reply_thread" style="padding: 0px;">
                                     <div class="panel-heading col-md-12">
                                         <div class="col-md-8 ticket_thread_title">
@@ -143,7 +133,7 @@
                                                     <img alt="" src="https://secure.gravatar.com/avatar/10933a36c442afed11f813423d76e372?s=40&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/10933a36c442afed11f813423d76e372?s=80&amp;d=mm&amp;r=g 2x" class="avatar avatar-40 photo img-circle" height="40" width="40">
                                                 </div>
                                                 <div class="col-md-10 wpsp_hthread_info" style="padding-left: 0px;">
-                                                    <strong><%#Eval("UserName")%></strong><br>
+                                                    <strong><%#Eval("PostedUser")%></strong><br>
                                                     <small><%#Eval("DatePosted")%></small>
                                                 </div>
                                             </div>
@@ -170,16 +160,16 @@
                         <h4>Ticket Status	</h4>
                         <hr class="ticketstatussidebar" />
                          <div class="ticket_status_sidebar">
-                            <strong>Status:</strong> 
-                            <asp:Label runat="server" ID="lblstatus" Text="" style="line-height:2.6;padding:6.6px;"></asp:Label>
+                            <strong>Status: </strong> 
+                            <span class="label <%#Eval("stat") %>" style="line-height:2.6;padding:6.6px;"><asp:Label runat="server" ID="lblstatus" Text="" style="font-size:10px;border-radius:0.75rem;padding:6.6px; line-height:2.6"></asp:Label></span>
                         </div>
 
                         <div class="ticket_status_sidebar">
-                            <strong>Category:</strong><asp:Label runat="server" ID="lblcategory" Text=""></asp:Label> 
+                            <strong>Category: </strong><asp:Label runat="server" ID="lblcategory" Text=""></asp:Label> 
                         </div>
 
                         <div class="ticket_status_sidebar">
-                            <strong>Priority:</strong> <asp:Label runat="server" ID="lblpriority" Text="" style="line-height:2.6;padding:6.6px;"></asp:Label>
+                            <strong>Priority: </strong><span class="label <%#Eval("prior") %>" style="line-height:2.6;padding:6.6px;"> <asp:Label runat="server" ID="lblpriority" Text="" style="font-size:10px;border-radius:0.75rem;padding:6.6px; line-height:2.6"></asp:Label></span>
                         </div>
                     </div>
             <%--Ticket Field Sidebar--%>

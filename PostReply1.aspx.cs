@@ -38,7 +38,7 @@ public partial class PostReply1 : System.Web.UI.Page
                 using (SqlCommand cmd = new SqlCommand())
                 {
 
-                    cmd.CommandText = "SELECT * from [CreateNewTicket_Master] where pk=" + Convert.ToInt32(lblTicketId.Text);
+                    cmd.CommandText = "SELECT *,case when Status = 'Open' then 'bg-red' else case when Status = 'Pending' then 'bg-yellow' else 'bg-green' end end [stat],case when PriorityId = 'High' then 'bg-red' else case when PriorityId = 'Medium' then 'bg-yellow' else 'bg-green' end end [prior] from [CreateNewTicket_Master] where pk=" + Convert.ToInt32(lblTicketId.Text);
                     cmd.Connection = cnn;
                     using (SqlDataAdapter da = new SqlDataAdapter(cmd))
                     {

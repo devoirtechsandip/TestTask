@@ -1,0 +1,3 @@
+
+1-- To Clear ID
+DBCC CHECKIDENT ('TicketFile_Master', RESEED, 0);

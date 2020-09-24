@@ -221,11 +221,11 @@ public partial class CreateNewTicketMaster : System.Web.UI.Page
         {
             HttpCookie aCookie = Request.Cookies["UserDetails"];
             string Role = null; //took variable to store role
-            string UserName = null; //took variable for every admin to store UserName
+            string UserName = null; //took variable for every admin to store UserName 
             if (aCookie != null)
             {
                 Role = aCookie["Role"];
-                UserName = aCookie["Username"];
+                UserName = aCookie["Username"]; 
             }
 
             SqlConnection cnn = new SqlConnection(ConfigurationManager.ConnectionStrings["ESSConnectionString"].ConnectionString);
@@ -237,8 +237,10 @@ public partial class CreateNewTicketMaster : System.Web.UI.Page
             com.Parameters.AddWithValue("@pk", System.DBNull.Value);
             com.Parameters.AddWithValue("@ReplyMessage ", txtTextArea.Value.ToString());
             com.Parameters.AddWithValue("@BCC ", System.DBNull.Value);
+            com.Parameters.AddWithValue("@PostedUser ", UserName);
             com.Parameters.AddWithValue("@DatePosted ", DateTime.Now);
             com.Parameters.AddWithValue("@TicketId ", Convert.ToInt32(ViewState["TicketId"]));
+            
             cnn.Open();
             com.ExecuteNonQuery();                     //executing the sqlcommand  
             cnn.Close();
