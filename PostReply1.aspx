@@ -84,7 +84,7 @@
                 </div>
             </div> 
                     <h4>
-                     Ticket #<asp:Label runat="server" Text="" ID="lblTicketId" Font-Bold="true"></asp:Label>&nbsp;&nbsp;<asp:Label runat="server" Text="" ID="lblSubject" Font-Bold="true"></asp:Label>
+                     Ticket #<asp:Label runat="server" Text="" ID="lblTicketId" Font-Bold="true"></asp:Label>&nbsp;&nbsp;<asp:Label runat="server" Text="" ID="lblSubject" ></asp:Label>
                     </h4>
                     
                 <hr />
@@ -124,16 +124,6 @@
                     <div class="table-responsive" style="border: 1px solid #5D7B9D;">
                         <asp:ListView ID="lstReply" runat="server">
                             <ItemTemplate>
-                                <%-- <table>
-                                        <tr> 
-                                            <th><%#Eval("UserName")%> <br><%#Eval("DatePosted")%></th>
-                                        </tr>
-                                       <hr style="width:50%;text-align:left;margin-left:0">
-                                        <tr>
-                                        <td><%#Eval("ReplyMessage")%></td>
-                                    </tr>
-                                       <hr style="width:50%;text-align:left;margin-left:0">
-                                    </table>--%>
                                 <div class="panel panel-primary col-md-12 wpsp_ticket_reply_thread" style="padding: 0px;">
                                     <div class="panel-heading col-md-12">
                                         <div class="col-md-8 ticket_thread_title">
@@ -189,7 +179,7 @@
 
                     <hr class="ticketstatussidebar"/>
             <div class="ticket_status_sidebar">
-                      <strong>Attachment:</strong>
+                      <%--<strong>Attachment:</strong>--%>
                     <%-- <asp:ListBox ID="ListBox1" runat="server" AutoPostBack="True"
             onselectedindexchanged="ListBox1_SelectedIndexChanged" />--%>
                     <div class="table-responsive" style="border: 1px solid #5D7B9D;">

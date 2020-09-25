@@ -159,6 +159,16 @@ public partial class PostReply1 : System.Web.UI.Page
     }
     public void InsertRole()
     {
+        HttpCookie aCookie = Request.Cookies["UserDetails"];
+        string Role = null; //took variable to store role
+        string UserName = null; //took variable for every admin to store UserName
+        string PostedUser = null;
+        if (aCookie != null)
+        {
+            Role = aCookie["Role"];
+            UserName = aCookie["Username"];
+            PostedUser = aCookie["Username"];
+        }
         try
         {
             SqlConnection cnn = new SqlConnection(ConfigurationManager.ConnectionStrings["ESSConnectionString"].ConnectionString);
@@ -166,7 +176,7 @@ public partial class PostReply1 : System.Web.UI.Page
             var query = string.Empty;
             var rply = (string.IsNullOrEmpty(txtReply.Text.Trim())) ? string.Empty : txtReply.Text.Trim();
             var bcc = (string.IsNullOrEmpty(txtBCC.Text.Trim())) ? string.Empty : txtBCC.Text.Trim();
-            query = "insert into [PostReply_Master](ReplyMessage,BCC,DatePosted,TicketId)" + "values('" + rply + "','" + bcc + "','" + DateTime.Now + "','" + Convert.ToInt32(lblTicketId.Text) + "')";
+            query = "insert into [PostReply_Master](ReplyMessage,BCC,PostedUser,DatePosted,TicketId)" + "values('" + rply + "','" + bcc + "','" + UserName + "','" + DateTime.Now + "','" + Convert.ToInt32(lblTicketId.Text) + "')";
             //query = "insert into [PostReply1_Master](Username,ReplyMessage,BCC,DatePosted,TicketId)" + "values('" + "Deepak" + "','" + rply + "','" + bcc + "','" + DateTime.Now + "','" + Convert.ToInt32(lblTicketId.Text) + "')";
             using (SqlCommand cmd = new SqlCommand(query, cnn))
             {

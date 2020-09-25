@@ -30,7 +30,7 @@
                 <!-- TABLE: Search Criteria -->
                 <div class="box box-info">
                     <div class="box-header with-border">
-                        <h3 class="box-title">Ticket List</h3>
+                        <%--<h3 class="box-title">Ticket List</h3>--%>
                         <div class="box-tools pull-right">
                             <button type="button" class="btn btn-box-tool" data-widget="collapse">
                                 <i class="fa fa-minus"></i>
@@ -42,17 +42,20 @@
                     <div class="box-body">
                         <div class="row">
                             <div class="col-md-12">
-
                                <div id="search">         
          <asp:TextBox ID="txtSearchMaster" runat="server" Height="23px" Width="973px"></asp:TextBox>
          <asp:Button ID="btnSearch" runat="server" Text="Search" OnClick="btnSearch_Click" CssClass="col-xs-offset-0" Width="53px" />
      </div>
                             </div>
                         </div>
-                        <br /> 
           </div>
+                     <div class="row" >
+                    <div class="col-md-offset-7 col-md-1" style="text-align:right;margin-left:85%;">
+                    <asp:Label ID="lbltotaltickets" runat="server" Text=""></asp:Label>
+                </div>
+            </div>
                       
-                       </div> 
+                      
                             <asp:Label ID="lblpk" runat="server" Text="pk" Visible="false"></asp:Label>
                             <asp:Label ID="lblmsg" runat="server" ForeColor="Red"></asp:Label> 
                         
@@ -119,7 +122,7 @@
                             </asp:ListView>
                         </div>
                         </div>
-                    </div>
+                    </div> </div> 
          <div class="row">
                           
                           <div class="col-md-4 col-md-offset-4" style="text-align: center;">

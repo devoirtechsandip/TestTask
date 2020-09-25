@@ -99,7 +99,7 @@ public class clsCommon
         {
             try
             {
-                var from = HttpContext.Current.Request.Cookies["smtpuser"].Value.ToString();
+                //var from = HttpContext.Current.Request.Cookies["smtpuser"].Value.ToString();
                 string fromPassword = HttpContext.Current.Request.Cookies["smtppwd"].Value.ToString();
 
                 string subject = sub;
@@ -135,7 +135,7 @@ public class clsCommon
                 smtp.EnableSsl = Convert.ToBoolean(HttpContext.Current.Request.Cookies["smtpssl"].Value.ToString());
                 smtp.DeliveryMethod = System.Net.Mail.SmtpDeliveryMethod.Network;
                 smtp.UseDefaultCredentials = false;
-                smtp.Credentials = new NetworkCredential(from, fromPassword);
+               // smtp.Credentials = new NetworkCredential(from, fromPassword);
 
                 smtp.Send(message);
             }

@@ -107,7 +107,7 @@ public partial class CreateNewTicketMaster : System.Web.UI.Page
     {
         txtsubject.Text = "";
         txtTextArea.Value = "";
-        ddlPriority.SelectedValue = "1";
+        ddlPriority.SelectedIndex = 0;
         ddlCategory.SelectedValue = "1";
         //CheckBox1.Checked = false;
         FileUpload1.Dispose();

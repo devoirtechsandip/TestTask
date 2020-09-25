@@ -40,7 +40,7 @@
                 <!-- TABLE: Search Criteria -->
                 <div class="box box-info">
                     <div class="box-header with-border">
-                        <h3 class="box-title">Ticket List</h3>
+                      <%--  <h3 class="box-title">Ticket List</h3>--%>
                         <div class="box-tools pull-right">
                             <button type="button" class="btn btn-box-tool" data-widget="collapse">
                                 <i class="fa fa-minus"></i>
@@ -56,20 +56,24 @@
                                <div id="search">         
          <asp:TextBox ID="txtSearchMaster" runat="server" Height="23px" Width="973px"></asp:TextBox>
          <asp:Button ID="btnSearch" runat="server" Text="Search" OnClick="btnSearch_Click" CssClass="col-xs-offset-0 status1" Width="53px" />
+                                  
      </div>
                             </div>
                         </div>
                         <br /> 
-            <div class="row" style="display:inline-block">      
-                <div class="col-md-6">
+            <div class="row" >      
+                <div class="col-md-1">
                     <asp:Button ID="btnchangestatus" runat="server"  CssClass="btn btn-default btn-sm status1" Text="Change Status " OnClick="btnchangestatus_Click" />
                     <asp:Label ID="lblHidden" runat="server" Text=""></asp:Label>
-       
                 </div>
-                <div class="col-md-2">
+                <div class="col-md-2" style="margin-left:1%;">
                     <asp:Button ID="btndelete" runat="server" OnClick="btndelete_Click" CssClass="btn btn-default btn-sm status1" Text="Delete" />
                 </div>
+                <div class="col-md-offset-7 col-md-1" style="text-align:right;margin-left:62%;">
+                    <asp:Label ID="lbltotaltickets" runat="server" Text=""></asp:Label>
+                </div>
             </div>
+             
                     <!-- Change status and priority modal popup -->
                    <asp:Button ID="btnvstatus" runat="server" style="display:none" ></asp:Button>
                 <cc1:ModalPopupExtender ID="mpechangestatus" BehaviorID="mpestatus" runat="server"

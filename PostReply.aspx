@@ -85,14 +85,14 @@
             </div>
 
                     <h4>
-                     Ticket #<asp:Label runat="server" Text="" ID="lblTicketId" ></asp:Label>&nbsp;&nbsp;<asp:Label runat="server" Text="" ID="lblSubject" Font-Bold="true"></asp:Label>
+                     Ticket #<asp:Label runat="server" Text="" ID="lblTicketId"></asp:Label>&nbsp;&nbsp;<asp:Label runat="server" Text="" ID="lblSubject"></asp:Label>
                     </h4>
                     
                 <hr />
 
             <div class="row">
                 <div class="col-md-12">
-                    <asp:Button ID="btnPosteRply" runat="server" Text="Post Reply" OnClick="btnPosteRply_Click" CssClass="btn well btn-default" Width="100%" Style="text-align:center"></asp:Button>
+                    <asp:Button ID="btnPosteRply" runat="server" Text="Post Reply" Font-Bold="true" OnClick="btnPosteRply_Click" CssClass="btn well btn-default" Width="100%" Style="text-align:center"></asp:Button>
                     <%--<button runat="server" id="btnPosteRply" class="btn well btn-default" style="text-align:center;width:100%" onclick="slidePanel('<%= pnlPostRply.ClientID %>')">--%>
                         
                 </div>

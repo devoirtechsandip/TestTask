@@ -24,6 +24,7 @@ public partial class TicketListMaster : System.Web.UI.Page
             //{
             //    Response.Redirect("LogInForm.aspx");
             //}
+            lbltotaltickets.Text = lstdc.Items.Count() + " Tickets";
         }
     }
 
