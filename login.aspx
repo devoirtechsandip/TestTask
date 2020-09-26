@@ -32,7 +32,7 @@
     <div>
         <div class="login-box">
             <div class="login-logo">
-                <a href="" >Mumbai Metro One Ad-Track</a>
+                <a href="" >Excellence</a>
             </div>
             <!-- /.login-logo -->
             <div class="login-box-body">
@@ -59,7 +59,7 @@
                   
                 </div>
                       <div class="col-xs-8 text-right no-padding" >
-                            <img src="dist/img/flow.png" width="66px" height="25px" />
+                            <%--<img src="dist/img/flow.png" width="66px" height="25px" />--%>
                         </div>
                 </div>
                     <div class="row" align="left">
@@ -67,7 +67,7 @@
                     <a href="FogotPassword.aspx">Forgot password?</a>
                         </div>
                         <div class="col-md-6 text-right no-padding" >
-                            <a href="#">Ver 1.1</a>
+                            <a href="#">Ver 1.0</a>
                         </div>
                         </div>
                    

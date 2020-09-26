@@ -9,7 +9,7 @@
 <head runat="server">
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Mumbai Metro One Ad-Track</title>
+    <title>Excellence</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <link href="dist/css/licenselists.css" rel="stylesheet" />
@@ -76,10 +76,10 @@
     <!-- Logo -->
     <a href="default.aspx" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
-      <span class="logo-mini"><b>M</b>M</span>
+      <span class="logo-mini"><b>E</b></span>
       <!-- logo for regular state and mobile devices -->
       <span class="logo-lg">
-          <img src="dist/img/Flowin).png" height="45px" style="padding-top:2px"/>
+          <%--<img src="dist/img/Flowin).png" height="45px" style="padding-top:2px"/>--%>
       </span>
     </a>
 
@@ -91,7 +91,7 @@
       </a>
         <div class="text-center" style="font-family:Arial, Helvetica, sans-serif; font-weight:700; display:block; height:50px; color:white; font-size:20px; padding:0 15px; line-height:50px" >
             <%--<img src="dist/img/LOGO%202.png"  width="242px" height="50px" />--%>
-            <span class="logo-lg"><b>Mumbai Metro One Ad-Track</b></span>
+            <span class="logo-lg"><b>Excellence</b></span>
         </div>
       <!-- Navbar Right Menu -->
       <div class="navbar-custom-menu">
@@ -139,7 +139,6 @@
       <!-- /.search form -->
       <!-- Sidebar Menu -->
       <ul class="sidebar-menu">
-        <li class="header">Mumbai Metro One Ad-Track</li>
         <li id="lihome" runat="server" class="treeview"><a href="Default.aspx"><i class="fa fa-home"></i><span>Home</span></a></li>
        <%-- <li id="Licat" runat="server"><a href="CategoryMaster.aspx"><i class="fa fa-plus"></i><span>Category</span></a></li>
         <li id="Liprio" runat="server"><a href="PriorityMaster.aspx"><i class="fa fa-plus"></i><span>Priority</span></a></li>
